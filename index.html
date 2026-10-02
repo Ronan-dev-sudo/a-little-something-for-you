@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -24,42 +24,8 @@ html,body{
 body{
   overflow:hidden;
   font-family:"DM Sans",sans-serif;
-  color:#5b3a48;
-  background:
-    radial-gradient(circle at 12% 12%,rgba(255,185,214,.72),transparent 30%),
-    radial-gradient(circle at 88% 82%,rgba(255,213,231,.85),transparent 34%),
-    linear-gradient(135deg,#fffafd 0%,#ffe8f1 48%,#fff 100%);
-}
-
-body:before,
-body:after{
-  content:"";
-  position:fixed;
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  filter:blur(70px);
-  pointer-events:none;
-  opacity:.45;
-  animation:glow 9s ease-in-out infinite alternate;
-}
-
-body:before{
-  background:#f5a8c7;
-  left:-100px;
-  top:-100px;
-}
-
-body:after{
-  background:#ffd0e1;
-  right:-100px;
-  bottom:-100px;
-  animation-delay:3s;
-}
-
-@keyframes glow{
-  from{transform:translate(0,0) scale(1)}
-  to{transform:translate(45px,25px) scale(1.15)}
+  background:#fff;
+  color:#492536;
 }
 
 .scene{
@@ -68,477 +34,495 @@ body:after{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:25px;
+  padding:30px;
   opacity:0;
   visibility:hidden;
-  transform:scale(.96) translateY(10px);
-  transition:
-    opacity 1.1s ease,
-    transform 1.1s ease,
-    visibility 1.1s;
+  pointer-events:none;
+  transition:opacity 1.2s ease;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,170,204,.28),transparent 30%),
+    radial-gradient(circle at 85% 80%,rgba(255,214,229,.35),transparent 35%),
+    linear-gradient(135deg,#fff,#fff7fa);
 }
 
 .scene.active{
   opacity:1;
   visibility:visible;
-  transform:scale(1) translateY(0);
+  pointer-events:auto;
 }
 
 .content{
-  width:min(760px,100%);
+  width:min(850px,100%);
   text-align:center;
   position:relative;
-  z-index:5;
+  z-index:3;
 }
 
-.kicker{
-  color:#bf6f91;
-  text-transform:uppercase;
-  letter-spacing:4px;
-  font-size:11px;
-  margin-bottom:17px;
-}
-
-h1,h2,.poem{
+h1,h2{
   font-family:"Cormorant Garamond",serif;
 }
 
 h1{
-  color:#583444;
-  font-size:clamp(54px,9vw,92px);
-  font-weight:500;
-  line-height:.9;
-}
-
-h2{
-  color:#603849;
-  font-size:clamp(42px,7vw,68px);
-  font-weight:500;
+  font-size:clamp(3rem,8vw,6rem);
   line-height:.95;
 }
 
-.subtitle{
-  max-width:590px;
-  margin:24px auto 0;
-  font-size:16px;
+h2{
+  font-size:clamp(2.5rem,6vw,4.5rem);
+  line-height:1;
+}
+
+p{
   line-height:1.8;
-  font-weight:300;
-  color:#765665;
-}
-
-.btn{
-  border:0;
-  margin-top:32px;
-  padding:14px 29px;
-  border-radius:999px;
-  background:#c86f95;
-  color:#fff;
-  font-family:inherit;
-  cursor:pointer;
-  font-size:13px;
-  letter-spacing:.4px;
-  box-shadow:0 15px 35px rgba(171,82,119,.2);
-  transition:.3s ease;
-}
-
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 19px 40px rgba(171,82,119,.27);
 }
 
 /* FLOATING HEARTS */
 
-.float-heart{
-  position:fixed;
-  z-index:1;
-  color:rgba(194,91,133,.3);
-  font-size:25px;
-  pointer-events:none;
-  animation:float 7s ease-in-out infinite;
+.heart{
+  position:absolute;
+  color:#f3a0bd;
+  font-size:22px;
+  opacity:.5;
+  animation:float 8s infinite ease-in-out;
 }
 
-.fh1{left:9%;top:20%}
-.fh2{right:12%;top:27%;animation-delay:2s}
-.fh3{left:16%;bottom:17%;animation-delay:1s}
-.fh4{right:18%;bottom:19%;animation-delay:3s}
+.h1{left:8%;top:20%;animation-delay:0s}
+.h2{left:18%;bottom:18%;animation-delay:2s}
+.h3{right:12%;top:17%;animation-delay:1s}
+.h4{right:20%;bottom:22%;animation-delay:3s}
+.h5{left:50%;top:9%;animation-delay:4s}
 
 @keyframes float{
-  0%,100%{transform:translateY(0) rotate(-7deg)}
-  50%{transform:translateY(-25px) rotate(8deg)}
+  0%,100%{transform:translateY(0) rotate(-8deg)}
+  50%{transform:translateY(-22px) rotate(8deg)}
 }
 
 /* BEAR */
 
 .bear-wrap{
-  width:180px;
-  height:180px;
-  margin:0 auto 20px;
+  width:250px;
+  height:250px;
+  margin:0 auto 35px;
   position:relative;
-  animation:breathe 3s ease-in-out infinite;
-}
-
-@keyframes breathe{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
 }
 
 .bear{
+  width:150px;
+  height:150px;
+  background:#c98f72;
+  border-radius:48% 48% 43% 43%;
   position:absolute;
-  width:125px;
-  height:115px;
-  left:28px;
-  top:42px;
-  background:#c89477;
-  border-radius:48% 48% 45% 45%;
+  left:50%;
+  top:50px;
+  transform:translateX(-50%);
+  box-shadow:inset 0 -8px 0 rgba(0,0,0,.05);
 }
 
 .ear{
-  position:absolute;
-  width:42px;
-  height:42px;
-  top:-19px;
-  background:#b98268;
+  width:52px;
+  height:52px;
+  background:#c98f72;
   border-radius:50%;
+  position:absolute;
+  top:-15px;
 }
 
-.ear.left{left:4px}
-.ear.right{right:4px}
+.ear:after{
+  content:"";
+  width:27px;
+  height:27px;
+  background:#eab3a2;
+  border-radius:50%;
+  position:absolute;
+  left:13px;
+  top:13px;
+}
+
+.ear.left{left:5px}
+.ear.right{right:5px}
 
 .eye{
-  position:absolute;
-  width:7px;
-  height:7px;
-  top:46px;
-  background:#4b2e2e;
+  width:9px;
+  height:9px;
+  background:#3a2630;
   border-radius:50%;
+  position:absolute;
+  top:58px;
 }
 
-.eye.left{left:38px}
-.eye.right{right:38px}
-
-.muzzle{
-  position:absolute;
-  width:42px;
-  height:32px;
-  left:42px;
-  top:56px;
-  background:#e5b79e;
-  border-radius:50%;
-}
+.eye.left{left:45px}
+.eye.right{right:45px}
 
 .nose{
-  position:absolute;
-  width:10px;
-  height:7px;
-  left:16px;
-  top:8px;
-  background:#593737;
+  width:20px;
+  height:15px;
+  background:#51333b;
   border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:78px;
+  transform:translateX(-50%);
+}
+
+.muzzle{
+  width:60px;
+  height:45px;
+  background:#e9b39d;
+  border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:70px;
+  transform:translateX(-50%);
+}
+
+.bear .nose{
+  z-index:2;
 }
 
 .mouth{
-  position:absolute;
-  width:15px;
-  height:8px;
-  left:13px;
-  top:12px;
-  border-bottom:2px solid #593737;
+  width:22px;
+  height:11px;
+  border-bottom:3px solid #51333b;
   border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:91px;
+  transform:translateX(-50%);
+}
+
+.body{
+  width:105px;
+  height:90px;
+  background:#c98f72;
+  border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:130px;
+  transform:translateX(-50%);
+}
+
+.arm{
+  width:35px;
+  height:75px;
+  background:#c98f72;
+  border-radius:40px;
+  position:absolute;
+  top:130px;
+}
+
+.arm.left{
+  left:42px;
+  transform:rotate(25deg);
+}
+
+.arm.right{
+  right:42px;
+  transform:rotate(-25deg);
 }
 
 .bear-heart{
   position:absolute;
-  left:62px;
-  bottom:0;
-  font-size:46px;
-  animation:heartbeat 1.8s infinite;
-}
-
-@keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  15%{transform:scale(1.13)}
-  30%{transform:scale(1)}
+  left:50%;
+  top:142px;
+  transform:translateX(-50%);
+  font-size:48px;
+  z-index:5;
 }
 
 /* FLOWER */
 
-.flower{
-  width:150px;
-  height:150px;
+.flower-wrap{
+  width:220px;
+  height:270px;
   margin:0 auto 20px;
   position:relative;
 }
 
-.flower-center{
+.stem{
   position:absolute;
-  width:40px;
-  height:40px;
-  left:55px;
-  top:55px;
-  border-radius:50%;
-  background:#e4a13b;
-  z-index:4;
-  box-shadow:0 0 25px rgba(228,161,59,.35);
+  width:8px;
+  height:145px;
+  background:#82b889;
+  left:50%;
+  bottom:15px;
+  transform:translateX(-50%);
+  border-radius:10px;
+  transform-origin:bottom;
+  animation:growStem 2s ease forwards;
+}
+
+.leaf{
+  width:70px;
+  height:35px;
+  background:#9dcc99;
+  border-radius:100% 0 100% 0;
+  position:absolute;
+  left:calc(50% - 8px);
+  bottom:75px;
+  transform:rotate(-28deg) scale(0);
+  animation:leafIn 1s 1.4s ease forwards;
+}
+
+.leaf.two{
+  left:auto;
+  right:calc(50% - 8px);
+  transform:rotate(208deg) scale(0);
+  animation-delay:1.7s;
+}
+
+.flower{
+  position:absolute;
+  left:50%;
+  top:25px;
+  width:110px;
+  height:110px;
+  transform:translateX(-50%) scale(0);
+  animation:bloom 2s 1.9s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 .petal{
   position:absolute;
-  width:62px;
-  height:62px;
-  left:44px;
-  top:44px;
-  background:#ed9dbb;
-  border-radius:50%;
-  opacity:0;
-  transform-origin:31px 31px;
-  animation:bloom 1.4s forwards;
+  width:60px;
+  height:60px;
+  background:#f39abb;
+  border-radius:50% 50% 45% 45%;
 }
 
-.p1{transform:rotate(0deg) translateY(-36px);animation-delay:.1s}
-.p2{transform:rotate(72deg) translateY(-36px);animation-delay:.25s}
-.p3{transform:rotate(144deg) translateY(-36px);animation-delay:.4s}
-.p4{transform:rotate(216deg) translateY(-36px);animation-delay:.55s}
-.p5{transform:rotate(288deg) translateY(-36px);animation-delay:.7s}
+.petal:nth-child(1){top:0;left:25px}
+.petal:nth-child(2){top:25px;left:0}
+.petal:nth-child(3){top:25px;right:0}
+.petal:nth-child(4){bottom:0;left:25px}
+
+.center{
+  position:absolute;
+  width:38px;
+  height:38px;
+  background:#f5c85b;
+  border-radius:50%;
+  left:36px;
+  top:36px;
+  z-index:2;
+}
+
+@keyframes growStem{
+  from{transform:translateX(-50%) scaleY(0)}
+  to{transform:translateX(-50%) scaleY(1)}
+}
+
+@keyframes leafIn{
+  to{transform:rotate(-28deg) scale(1)}
+}
 
 @keyframes bloom{
-  from{
-    opacity:0;
-    transform:scale(.2) rotate(0);
-  }
-  to{
-    opacity:.9;
-  }
+  0%{transform:translateX(-50%) scale(0)}
+  70%{transform:translateX(-50%) scale(1.12)}
+  100%{transform:translateX(-50%) scale(1)}
 }
 
-/* LOVE SEQUENCE */
+/* LOVE MOMENT */
+
+.love-title{
+  font-size:clamp(2.6rem,6vw,4.5rem);
+  margin-bottom:30px;
+}
+
+.love-message{
+  min-height:150px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  color:#9b3f61;
+  padding:20px;
+}
 
 .love-heart{
-  font-size:70px;
-  margin-bottom:18px;
-  animation:lovePulse 2s infinite;
+  font-size:75px;
+  display:block;
+  animation:heartbeat 1.5s infinite;
 }
 
-@keyframes lovePulse{
+@keyframes heartbeat{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.15)}
+  15%{transform:scale(1.15)}
+  30%{transform:scale(1)}
+  45%{transform:scale(1.08)}
 }
 
-.love-text{
-  max-width:650px;
-  margin:auto;
-  min-height:110px;
+.dots{
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-family:"Cormorant Garamond",serif;
-  color:#63384a;
-  font-size:clamp(35px,6vw,62px);
-  line-height:1.05;
-  transition:opacity 1s ease;
+  gap:8px;
+  margin-top:25px;
 }
 
-.love-small{
-  margin-top:16px;
-  color:#805d6b;
-  font-size:15px;
-  line-height:1.7;
-  transition:opacity 1s ease;
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#efb2c6;
+  opacity:.35;
+}
+
+.dot.active{
+  opacity:1;
 }
 
 /* ENVELOPE */
 
-.envelope-area{
-  width:min(440px,90vw);
-  height:285px;
-  margin:28px auto 0;
-  position:relative;
-  perspective:1000px;
-  cursor:pointer;
+.letter-area{
+  width:min(650px,100%);
+  margin:auto;
 }
 
 .envelope{
-  position:absolute;
-  width:100%;
-  height:225px;
-  bottom:0;
-  background:#f2b2c9;
-  border-radius:11px;
-  box-shadow:0 25px 55px rgba(117,56,83,.18);
+  width:min(430px,90vw);
+  height:280px;
+  margin:30px auto;
+  position:relative;
+  cursor:pointer;
+  perspective:1000px;
 }
 
-.envelope:before,
-.envelope:after{
-  content:"";
+.env-back{
   position:absolute;
-  bottom:0;
-  width:0;
-  height:0;
-  border-style:solid;
+  inset:0;
+  background:#f5b4ca;
+  border-radius:12px;
+  box-shadow:0 25px 60px rgba(130,57,86,.18);
+}
+
+.env-front{
+  position:absolute;
+  inset:0;
+  background:#f8c2d4;
+  clip-path:polygon(0 38%,50% 72%,100% 38%,100% 100%,0 100%);
+  border-radius:0 0 12px 12px;
   z-index:3;
 }
 
-.envelope:before{
-  left:0;
-  border-width:112px 220px 0 0;
-  border-color:#dd8eac transparent transparent transparent;
-}
-
-.envelope:after{
-  right:0;
-  border-width:0 220px 112px 0;
-  border-color:transparent #dd8eac transparent transparent;
-}
-
-.flap{
+.env-flap{
   position:absolute;
-  z-index:6;
   left:0;
   top:0;
-  width:0;
-  height:0;
-  border-left:220px solid transparent;
-  border-right:220px solid transparent;
-  border-top:132px solid #ebabc2;
+  width:100%;
+  height:70%;
+  background:#f0a7c0;
+  clip-path:polygon(0 0,100% 0,50% 72%);
   transform-origin:top;
-  transition:1.15s ease;
+  transition:transform 1s ease;
+  z-index:4;
 }
 
 .seal{
   position:absolute;
-  z-index:8;
   left:50%;
-  top:91px;
-  width:59px;
-  height:59px;
-  transform:translateX(-50%);
+  top:48%;
+  transform:translate(-50%,-50%);
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:50%;
-  background:#c86f95;
-  color:#fff;
-  font-size:26px;
-  box-shadow:0 8px 22px rgba(139,65,96,.25);
-  transition:.6s ease;
+  font-size:25px;
+  z-index:6;
+  box-shadow:0 8px 20px rgba(120,40,70,.15);
+  transition:opacity .4s;
 }
 
-.letter{
-  position:absolute;
-  z-index:2;
-  left:5%;
-  bottom:32px;
-  width:90%;
-  height:195px;
-  padding:25px;
-  overflow:hidden;
-  background:#fffdfd;
-  border-radius:6px;
-  box-shadow:0 8px 20px rgba(70,35,48,.08);
-  transition:1.25s ease;
-}
-
-.envelope.open .flap{
+.envelope.open .env-flap{
   transform:rotateX(180deg);
-  z-index:1;
 }
 
 .envelope.open .seal{
   opacity:0;
-  transform:translateX(-50%) scale(.5);
 }
 
-.envelope.open .letter{
-  transform:translateY(-120px);
-  height:min(470px,59vh);
-  overflow-y:auto;
-}
-
-.letter::-webkit-scrollbar{
-  width:4px;
-}
-
-.letter::-webkit-scrollbar-thumb{
-  background:#e6a5bb;
-  border-radius:10px;
-}
-
-.letter-name{
-  font-family:"Cormorant Garamond",serif;
-  color:#593445;
+.letter{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(20px);
+  transition:max-height 2s ease,opacity 1s ease,transform 1s ease;
   text-align:left;
-  font-size:28px;
-  margin-bottom:12px;
+  background:rgba(255,255,255,.9);
+  border-radius:20px;
+  padding:0 30px;
+  box-shadow:0 20px 60px rgba(120,40,70,.1);
+}
+
+.letter.show{
+  max-height:70vh;
+  overflow-y:auto;
+  opacity:1;
+  transform:translateY(0);
+  padding:35px 30px;
 }
 
 .letter p{
-  font-family:"Cormorant Garamond",serif;
-  color:#684452;
-  font-size:18px;
-  line-height:1.55;
-  text-align:left;
   white-space:pre-line;
+  font-family:"Cormorant Garamond",serif;
+  font-size:21px;
+  line-height:1.55;
+  color:#593243;
 }
 
-.click-note{
-  margin-top:16px;
-  color:#b36b87;
-  font-size:11px;
-  letter-spacing:2.5px;
-  text-transform:uppercase;
+.signature{
+  margin-top:25px;
+  text-align:right;
+  font-family:"Cormorant Garamond",serif;
+  font-size:25px;
 }
 
 /* FINAL */
 
 .final-heart{
-  font-size:62px;
-  animation:lovePulse 2.2s infinite;
-  margin-bottom:22px;
+  font-size:80px;
+  animation:heartbeat 1.6s infinite;
+  margin-bottom:25px;
 }
 
-.final-line{
-  font-family:"Cormorant Garamond",serif;
-  color:#603849;
-  font-size:clamp(34px,6vw,58px);
-  line-height:1.08;
+.final h2{
+  margin-bottom:25px;
 }
 
-.signature{
-  margin-top:28px;
-  font-family:"Cormorant Garamond",serif;
-  font-size:27px;
-  color:#9c6177;
+.final p{
+  font-size:20px;
+  max-width:580px;
+  margin:auto;
 }
+
+/* MOBILE */
 
 @media(max-width:600px){
-
   .scene{
-    padding:18px;
+    padding:20px;
   }
 
-  .subtitle{
-    font-size:15px;
+  .bear-wrap{
+    transform:scale(.85);
+    margin-bottom:10px;
   }
 
-  .envelope-area{
-    height:255px;
+  .flower-wrap{
+    transform:scale(.8);
+    margin-bottom:-10px;
   }
 
-  .flap{
-    border-left-width:45vw;
-    border-right-width:45vw;
-    border-top-width:120px;
-  }
-
-  .envelope:before{
-    border-width:112px 45vw 0 0;
-  }
-
-  .envelope:after{
-    border-width:0 45vw 112px 0;
+  .letter.show{
+    max-height:65vh;
+    padding:25px 20px;
   }
 
   .letter p{
-    font-size:17px;
+    font-size:19px;
+  }
+
+  .envelope{
+    height:230px;
   }
 }
 </style>
@@ -546,505 +530,420 @@ h2{
 
 <body>
 
-<div class="float-heart fh1">♡</div>
-<div class="float-heart fh2">♡</div>
-<div class="float-heart fh3">♡</div>
-<div class="float-heart fh4">♡</div>
+<!-- FLOATING HEARTS -->
+<div class="heart h1">♡</div>
+<div class="heart h2">♡</div>
+<div class="heart h3">♡</div>
+<div class="heart h4">♡</div>
+<div class="heart h5">♡</div>
 
-<!-- 1. WELCOME -->
-<section class="scene active" id="scene1">
-  <div class="content">
-    <div class="kicker">A little something</div>
-
-    <h1>Hey you… 🤍</h1>
-
-    <p class="subtitle">
-      I know things have been a little hard recently…
-      <br>
-      So we made you a little something.
-    </p>
-
-    <button class="btn" onclick="nextScene()">
-      Come in 🤍
-    </button>
-  </div>
-</section>
-
-<!-- 2. BEAR -->
-<section class="scene" id="scene2">
+<!-- BEAR -->
+<section class="scene active" id="bear">
   <div class="content">
 
     <div class="bear-wrap">
+
       <div class="bear">
+
         <div class="ear left"></div>
         <div class="ear right"></div>
+
+        <div class="muzzle"></div>
+
         <div class="eye left"></div>
         <div class="eye right"></div>
 
-        <div class="muzzle">
-          <div class="nose"></div>
-          <div class="mouth"></div>
-        </div>
+        <div class="nose"></div>
+        <div class="mouth"></div>
+
       </div>
 
-      <div class="bear-heart">🩷</div>
+      <div class="body"></div>
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+
+      <div class="bear-heart">💗</div>
+
     </div>
 
-    <div class="kicker">A little reminder</div>
-
-    <h2>Take a little breath.</h2>
-
-    <p class="subtitle">
-      You don't have to figure everything out today.
-      <br>
-      Just take it one little step at a time.
+    <h2>Just a little something for you…</h2>
+    <p style="margin-top:15px;">
+      Stay here for a moment. 🤍
     </p>
 
   </div>
 </section>
 
-<!-- 3. FLOWER + SCRIPTURE -->
-<section class="scene" id="scene3">
+
+<!-- FLOWER -->
+<section class="scene" id="flower">
   <div class="content">
 
-    <div class="flower">
-      <div class="petal p1"></div>
-      <div class="petal p2"></div>
-      <div class="petal p3"></div>
-      <div class="petal p4"></div>
-      <div class="petal p5"></div>
-      <div class="flower-center"></div>
+    <div class="flower-wrap">
+
+      <div class="stem"></div>
+      <div class="leaf"></div>
+      <div class="leaf two"></div>
+
+      <div class="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+
     </div>
 
-    <div class="kicker">A little reminder</div>
+    <h2>
+      “The Lord is nigh unto them that are of a broken heart…”
+    </h2>
 
-    <h2>You are never alone.</h2>
+    <p style="margin-top:18px;font-size:17px;">
+      Psalm 34:18 · KJV
+    </p>
 
-    <p class="subtitle">
-      “The Lord is near to the brokenhearted
-      and saves the crushed in spirit.”
-      <br><br>
-      <strong>Psalm 34:18</strong>
-      <br><br>
-      We've got your back. 🤍
+    <p style="margin-top:25px;">
+      You are never alone. We’ve got your back. 🤍
     </p>
 
   </div>
 </section>
 
-<!-- 4. 30 SECOND LOVE MOMENT -->
-<section class="scene" id="scene4">
+
+<!-- 30 SECOND LOVE MOMENT -->
+<section class="scene" id="love">
   <div class="content">
 
-    <div class="love-heart">♡</div>
+    <h2 class="love-title">For the next 30 seconds…</h2>
 
-    <div class="kicker">Just a little something</div>
-
-    <div class="love-text" id="loveText">
-      For you. 🤍
+    <div class="love-message" id="loveMessage">
+      <div>
+        <span class="love-heart">♡</span>
+        <div style="margin-top:10px;">Just breathe.</div>
+      </div>
     </div>
 
-    <div class="love-small" id="loveSmall">
-      Sometimes you don't need many words.
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
 
   </div>
 </section>
 
-<!-- 5. JEFF'S LETTER -->
-<section class="scene" id="scene5">
-  <div class="content">
 
-    <div class="kicker">Someone wanted to tell you something</div>
+<!-- YOUR LETTER -->
+<section class="scene" id="myLetter">
+  <div class="content letter-area">
 
-    <h2>A little letter. 💌</h2>
+    <h2>A little letter from me 🤍</h2>
 
-    <div class="envelope-area" onclick="openLetter('letter1')">
+    <div class="envelope" id="env1">
+      <div class="env-back"></div>
+      <div class="env-flap"></div>
+      <div class="env-front"></div>
+      <div class="seal">♡</div>
+    </div>
 
-      <div class="envelope" id="letter1">
+    <div class="letter" id="letter1">
+      <p>
+Hey there, I know you love letters, so I wrote this one for you today.
 
-        <div class="letter">
+I know your heart has been feeling heavy lately, and I just wanted to remind you of something.
 
-          <div class="letter-name">
-            Hey Sades,
-          </div>
+You put so much weight on how you show up for people, sometimes forgetting that your presence alone already brings so much fullness into people's lives.
 
-          <p>
-Hey there, I know you love letters,
-so I wrote this one for you today.
+You are a blessing. A gift. A gem.
 
-In a season where words can't translate
-the feelings of the heart,
-you still choose every day
-to keep showing up.
+You carry so much love, and you have this inviting spirit that makes people feel at home.
 
-You put so much weight
-on how you show up for people,
-sometimes forgetting
-that your presence alone
-already brings so much fullness
-into people's lives.
+God uses you in ways you may not even realise.
 
-You are a blessing.
-A gift.
-A gem.
-
-You carry so much love,
-and your inviting spirit
-has a stillness that calms people down.
-
-You help others in so many ways,
-and God uses you in ways
-you may not even comprehend.
-
-I know your heart has been feeling heavy.
-
-You've spent so much time
-meeting deadlines
-that you forgot the appointments
-with your own feelings.
-
-But it's okay to be sad.
-It's okay to be tired.
-It's okay to need time for yourself.
-It's okay to not be okay.
+It's okay to be sad. It's okay to be tired. It's okay to need time for yourself. It's okay to not be okay.
 
 The Lord refreshes our souls.
 
-So I pray your light comes back strong.
-I pray this season brings you
-comfort and consolation.
+And before anyone else, you are God's child.
 
-Before anyone else,
-you are God's child.
-
-And I hope you learn to give yourself
-the same love you so freely give to others.
-
-Because your presence fills a room.
-
-And the way you freely dance to the Lord
-ministers God all by itself.
+I hope you learn to give yourself the same love you so freely give to other people.
 
 Thank you for being a big sis to me.
-Thank you for giving me a home
-at the Lower Coast.
 
-You made me feel like family
-before anyone else ever did.
+Thank you for giving me a home at the Lower Coast. You made me feel like family before anyone else ever did.
 
-You're not just my friend, Sades.
-You're my family.
+You're not just my friend, Sades. You're family.
 
-And that's why I can't put you
-in a hierarchy of ranks.
+And that's why I can't put you in a hierarchy of ranks.
 
-Because how do you rank family?
+Because how do you rank family? 😂
 
-I really appreciate you
-so, so much.
-
-I wish you knew
-how much of a blessing
-you've been to me.
-
-I can't imagine a life
-without you in it.
+I really appreciate you so, so much. I wish you knew how much of a blessing you've been to me.
 
 We're stuck for life. 😂🤍
 
-I wish you the fat of the land
-and all the good life can offer,
-because kind souls like you
-deserve all the beauty that exists.
+I wish you the fat of the land and all the good life can offer.
 
 We love you, Sades.
 
 I love you, Sades.
 
 Always. 🤍
-          </p>
+      </p>
 
-        </div>
-
-        <div class="flap"></div>
-        <div class="seal">♡</div>
-
+      <div class="signature">
+        — Jeff 🤍
       </div>
-    </div>
-
-    <div class="click-note">
-      Tap the envelope
     </div>
 
   </div>
 </section>
 
-<!-- 6. MAM / SADEZ'S BFF -->
-<section class="scene" id="scene6">
-  <div class="content">
 
-    <div class="kicker">
-      And a little something from your BFF…
+<!-- MAM / BFF LETTER -->
+<section class="scene" id="bffLetter">
+  <div class="content letter-area">
+
+    <h2>A little something from your BFF 🤍</h2>
+
+    <div class="envelope" id="env2">
+      <div class="env-back"></div>
+      <div class="env-flap"></div>
+      <div class="env-front"></div>
+      <div class="seal">♡</div>
     </div>
 
-    <h2>A few words for you. 💌</h2>
+    <div class="letter" id="letter2">
 
-    <div class="envelope-area" onclick="openLetter('letter2')">
+      <p>
+Sadez. You are special.
 
-      <div class="envelope" id="letter2">
-
-        <div class="letter">
-
-          <div class="letter-name">
-            Sadez,
-          </div>
-
-          <p>
-You are special.
 Never forget that.
 
-Do not conform yourself
-to whatever your situations
-want to change about you.
+Do not conform yourself to whatever your situations want to change about you.
 
-Do not manufacture another identity
-to align with what you are facing.
+Do not manufacture another identity to align with what you are facing.
 
-Do not look around and think
-that it has to take another identity
-for you to go through
-what you are going through.
+Do not look around and think that it has to take another identity for you to go through what you are going through.
 
 Yes, bad things happen to good people.
 
-You don't have to be evil
-for evil to come.
+You don't have to be evil for evil to come.
 
-You are still so good,
-so sweet,
-so sound,
-so sober.
+You are still so good, so sweet, so sound, so sober.
 
-Therefore remain confident
-in who you have always been.
+Therefore remain confident in who you have always been.
 
 A still girl.
+
 A great girl.
+
 A beautiful girl.
+
 A courageous girl.
+
 A God girl.
 
-This way,
-it is evil that will be influenced
-to work for your good
-and not vice versa.
+This way, it is evil that will be influenced to work for your good and not vice versa.
 
-I love you
-and always will. ♥️
-          </p>
+I love you and always will. ♥️
+      </p>
 
-        </div>
-
-        <div class="flap"></div>
-        <div class="seal">♡</div>
-
+      <div class="signature">
+        — Mam 🤍
       </div>
-    </div>
 
-    <div class="click-note">
-      Tap the envelope
     </div>
 
   </div>
 </section>
 
-<!-- 7. FINAL -->
-<section class="scene" id="scene7">
+
+<!-- FINAL -->
+<section class="scene final" id="final">
   <div class="content">
 
-    <div class="final-heart">♡</div>
+    <div class="final-heart">🤍</div>
 
-    <div class="kicker">
-      Just in case you forget
-    </div>
+    <h2>You are never alone.</h2>
 
-    <div class="final-line">
-      You are never alone.
-      <br>
+    <p>
       We've got your back.
-    </div>
-
-    <p class="subtitle">
-      So breathe.
-      <br>
-      Take your time.
-      <br>
-      And keep being you. 🤍
-    </p>
-
-    <div class="signature">
-      We love you, Sadez.
+      <br><br>
+      So breathe.<br>
+      Take your time.<br>
+      And keep being you.
+      <br><br>
+      We love you, Sades.
       <br>
       Always. 🤍
-    </div>
+    </p>
 
   </div>
 </section>
+
 
 <script>
 
-let currentScene = 1;
-let loveInterval;
+/* ---------------------------
+   SCENE CONTROL
+---------------------------- */
 
-function showScene(number){
+const scenes = [
+  document.getElementById("bear"),
+  document.getElementById("flower"),
+  document.getElementById("love"),
+  document.getElementById("myLetter"),
+  document.getElementById("bffLetter"),
+  document.getElementById("final")
+];
 
-  document.querySelectorAll(".scene").forEach(scene=>{
-    scene.classList.remove("active");
+let current = 0;
+
+function showScene(index){
+
+  scenes.forEach((scene,i)=>{
+    scene.classList.toggle("active",i === index);
   });
 
-  const target = document.getElementById("scene"+number);
-
-  if(target){
-    setTimeout(()=>{
-      target.classList.add("active");
-    },80);
-  }
-
-  currentScene = number;
+  current = index;
 }
 
-function nextScene(){
 
-  if(currentScene < 7){
+/* ---------------------------
+   BEAR → FLOWER
+---------------------------- */
 
-    currentScene++;
+setTimeout(()=>{
+  showScene(1);
+},6500);
 
-    showScene(currentScene);
 
-    if(currentScene === 4){
-      startLoveSequence();
-    }
-  }
+/* ---------------------------
+   FLOWER → LOVE
+---------------------------- */
+
+setTimeout(()=>{
+  showScene(2);
+},12500);
+
+
+/* ---------------------------
+   LOVE SEQUENCE
+---------------------------- */
+
+const messages = [
+  "Just breathe. 🤍",
+  "You don't have to figure everything out today.",
+  "Take your time.",
+  "You are allowed to rest.",
+  "We're here. 🤍"
+];
+
+const messageBox = document.getElementById("loveMessage");
+const dots = document.querySelectorAll(".dot");
+
+let loveIndex = 0;
+
+function updateLove(){
+
+  messageBox.innerHTML = `
+    <div>
+      <span class="love-heart">♡</span>
+      <div style="margin-top:10px;">
+        ${messages[loveIndex]}
+      </div>
+    </div>
+  `;
+
+  dots.forEach((dot,i)=>{
+    dot.classList.toggle("active",i === loveIndex);
+  });
+
+  loveIndex++;
 }
 
-/* LOVE SEQUENCE */
+const loveTimer = setInterval(()=>{
 
-function startLoveSequence(){
-
-  const text = document.getElementById("loveText");
-  const small = document.getElementById("loveSmall");
-
-  const moments = [
-
-    {
-      title:"For you. 🤍",
-      small:"Sometimes you don't need many words."
-    },
-
-    {
-      title:"You don't have to carry everything alone.",
-      small:"There are people who are here for you."
-    },
-
-    {
-      title:"We're here.",
-      small:"Through the good days, the difficult ones, and everything in between."
-    },
-
-    {
-      title:"You are never alone.",
-      small:"We've got your back. 🤍"
-    },
-
-    {
-      title:"A little love before the letter. 💗",
-      small:"Just because you deserve to be reminded."
-    }
-
-  ];
-
-  let index = 0;
-
-  function changeMoment(){
-
-    if(index >= moments.length){
-      return;
-    }
-
-    text.style.opacity="0";
-    small.style.opacity="0";
-
-    setTimeout(()=>{
-
-      text.textContent = moments[index].title;
-      small.textContent = moments[index].small;
-
-      text.style.opacity="1";
-      small.style.opacity="1";
-
-      index++;
-
-    },500);
-  }
-
-  changeMoment();
-
-  loveInterval=setInterval(changeMoment,5500);
-
-  setTimeout(()=>{
-
-    clearInterval(loveInterval);
-
-    if(currentScene===4){
-      showScene(5);
-    }
-
-  },30000);
-}
-
-/* LETTERS */
-
-function openLetter(id){
-
-  const envelope=document.getElementById(id);
-
-  if(envelope.classList.contains("open")){
+  if(current !== 2){
+    clearInterval(loveTimer);
     return;
   }
 
-  envelope.classList.add("open");
+  updateLove();
 
-  const note=envelope
-    .closest(".content")
-    .querySelector(".click-note");
+},5500);
 
-  if(note){
-    note.textContent="Take your time. 🤍";
+
+/* exactly 30 seconds after LOVE begins */
+
+setTimeout(()=>{
+
+  if(current === 2){
+    showScene(3);
   }
 
-  if(id==="letter1"){
+},30000);
 
-    setTimeout(()=>{
 
-      if(currentScene===5){
-        showScene(6);
-      }
+/* ---------------------------
+   YOUR ENVELOPE
+---------------------------- */
 
-    },28000);
+const env1 = document.getElementById("env1");
+const letter1 = document.getElementById("letter1");
+
+env1.addEventListener("click",()=>{
+
+  env1.classList.add("open");
+
+  setTimeout(()=>{
+    letter1.classList.add("show");
+  },800);
+
+  setTimeout(()=>{
+    showScene(4);
+  },30000);
+
+});
+
+
+/* ---------------------------
+   BFF / MAM ENVELOPE
+---------------------------- */
+
+const env2 = document.getElementById("env2");
+const letter2 = document.getElementById("letter2");
+
+env2.addEventListener("click",()=>{
+
+  env2.classList.add("open");
+
+  setTimeout(()=>{
+    letter2.classList.add("show");
+  },800);
+
+  setTimeout(()=>{
+    showScene(5);
+  },25000);
+
+});
+
+
+/* ---------------------------
+   SAFETY FALLBACK
+   Makes sure the site never
+   gets stuck on the bear.
+---------------------------- */
+
+setTimeout(()=>{
+  if(current === 0){
+    showScene(1);
   }
-
-  if(id==="letter2"){
-
-    setTimeout(()=>{
-
-      if(currentScene===6){
-        showScene(7);
-      }
-
-    },22000);
-  }
-}
+},8000);
 
 </script>
 
