@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>A Little Something For You 🤍</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -24,31 +26,58 @@ html,body{
 body{
   overflow:hidden;
   font-family:"DM Sans",sans-serif;
-  background:#fff;
   color:#492536;
+  background:#fff;
 }
+
+
+/* =========================
+   SCENES
+========================= */
 
 .scene{
   position:absolute;
   inset:0;
+
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+
   padding:30px;
+
   opacity:0;
   visibility:hidden;
   pointer-events:none;
-  transition:opacity 1.2s ease;
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+
+  transform:translateY(15px);
+
   background:
-    radial-gradient(circle at 15% 15%,rgba(255,170,204,.28),transparent 30%),
-    radial-gradient(circle at 85% 80%,rgba(255,214,229,.35),transparent 35%),
-    linear-gradient(135deg,#fff,#fff7fa);
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(255,170,204,.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(255,214,229,.35),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #fff,
+      #fff7fa
+    );
 }
 
 .scene.active{
   opacity:1;
   visibility:visible;
   pointer-events:auto;
+  transform:translateY(0);
 }
 
 .content{
@@ -62,11 +91,6 @@ h1,h2{
   font-family:"Cormorant Garamond",serif;
 }
 
-h1{
-  font-size:clamp(3rem,8vw,6rem);
-  line-height:.95;
-}
-
 h2{
   font-size:clamp(2.5rem,6vw,4.5rem);
   line-height:1;
@@ -76,7 +100,10 @@ p{
   line-height:1.8;
 }
 
-/* FLOATING HEARTS */
+
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 .heart{
   position:absolute;
@@ -84,20 +111,54 @@ p{
   font-size:22px;
   opacity:.5;
   animation:float 8s infinite ease-in-out;
+  z-index:1;
 }
 
-.h1{left:8%;top:20%;animation-delay:0s}
-.h2{left:18%;bottom:18%;animation-delay:2s}
-.h3{right:12%;top:17%;animation-delay:1s}
-.h4{right:20%;bottom:22%;animation-delay:3s}
-.h5{left:50%;top:9%;animation-delay:4s}
+.h1{
+  left:8%;
+  top:20%;
+}
+
+.h2{
+  left:18%;
+  bottom:18%;
+  animation-delay:2s;
+}
+
+.h3{
+  right:12%;
+  top:17%;
+  animation-delay:1s;
+}
+
+.h4{
+  right:20%;
+  bottom:22%;
+  animation-delay:3s;
+}
+
+.h5{
+  left:50%;
+  top:9%;
+  animation-delay:4s;
+}
 
 @keyframes float{
-  0%,100%{transform:translateY(0) rotate(-8deg)}
-  50%{transform:translateY(-22px) rotate(8deg)}
+
+  0%,100%{
+    transform:translateY(0) rotate(-8deg);
+  }
+
+  50%{
+    transform:translateY(-22px) rotate(8deg);
+  }
+
 }
 
-/* BEAR */
+
+/* =========================
+   BEAR
+========================= */
 
 .bear-wrap{
   width:250px;
@@ -109,100 +170,154 @@ p{
 .bear{
   width:150px;
   height:150px;
+
   background:#c98f72;
-  border-radius:48% 48% 43% 43%;
+
+  border-radius:
+    48% 48% 43% 43%;
+
   position:absolute;
+
   left:50%;
   top:50px;
+
   transform:translateX(-50%);
-  box-shadow:inset 0 -8px 0 rgba(0,0,0,.05);
+
+  box-shadow:
+    inset 0 -8px 0 rgba(0,0,0,.05);
 }
 
 .ear{
   width:52px;
   height:52px;
+
   background:#c98f72;
+
   border-radius:50%;
+
   position:absolute;
   top:-15px;
 }
 
 .ear:after{
   content:"";
+
   width:27px;
   height:27px;
+
   background:#eab3a2;
+
   border-radius:50%;
+
   position:absolute;
+
   left:13px;
   top:13px;
 }
 
-.ear.left{left:5px}
-.ear.right{right:5px}
+.ear.left{
+  left:5px;
+}
+
+.ear.right{
+  right:5px;
+}
 
 .eye{
   width:9px;
   height:9px;
+
   background:#3a2630;
+
   border-radius:50%;
+
   position:absolute;
   top:58px;
 }
 
-.eye.left{left:45px}
-.eye.right{right:45px}
+.eye.left{
+  left:45px;
+}
+
+.eye.right{
+  right:45px;
+}
 
 .muzzle{
   width:60px;
   height:45px;
+
   background:#e9b39d;
+
   border-radius:50%;
+
   position:absolute;
+
   left:50%;
   top:70px;
+
   transform:translateX(-50%);
 }
 
 .nose{
   width:20px;
   height:15px;
+
   background:#51333b;
+
   border-radius:50%;
+
   position:absolute;
+
   left:50%;
   top:78px;
+
   transform:translateX(-50%);
+
   z-index:2;
 }
 
 .mouth{
   width:22px;
   height:11px;
-  border-bottom:3px solid #51333b;
+
+  border-bottom:
+    3px solid #51333b;
+
   border-radius:50%;
+
   position:absolute;
+
   left:50%;
   top:91px;
+
   transform:translateX(-50%);
 }
 
 .body{
   width:105px;
   height:90px;
+
   background:#c98f72;
+
   border-radius:50%;
+
   position:absolute;
+
   left:50%;
   top:130px;
+
   transform:translateX(-50%);
 }
 
 .arm{
   width:35px;
   height:75px;
+
   background:#c98f72;
+
   border-radius:40px;
+
   position:absolute;
   top:130px;
 }
@@ -219,132 +334,261 @@ p{
 
 .bear-heart{
   position:absolute;
+
   left:50%;
   top:142px;
+
   transform:translateX(-50%);
+
   font-size:48px;
+
   z-index:5;
 }
 
-/* FLOWER */
+
+/* =========================
+   FLOWER
+========================= */
 
 .flower-wrap{
   width:220px;
   height:270px;
+
   margin:0 auto 20px;
+
   position:relative;
 }
 
 .stem{
   position:absolute;
+
   width:8px;
   height:145px;
+
   background:#82b889;
+
   left:50%;
   bottom:15px;
-  transform:translateX(-50%);
+
+  transform:
+    translateX(-50%)
+    scaleY(0);
+
   border-radius:10px;
+
   transform-origin:bottom;
-  animation:growStem 2s ease forwards;
+
+  animation:
+    growStem 2s ease forwards;
 }
 
 .leaf{
   width:70px;
   height:35px;
+
   background:#9dcc99;
-  border-radius:100% 0 100% 0;
+
+  border-radius:
+    100% 0 100% 0;
+
   position:absolute;
+
   left:calc(50% - 8px);
   bottom:75px;
-  transform:rotate(-28deg) scale(0);
-  animation:leafIn 1s 1.4s ease forwards;
+
+  transform:
+    rotate(-28deg)
+    scale(0);
+
+  animation:
+    leafIn 1s 1.4s ease forwards;
 }
 
 .leaf.two{
   left:auto;
+
   right:calc(50% - 8px);
-  transform:rotate(208deg) scale(0);
+
+  transform:
+    rotate(208deg)
+    scale(0);
+
   animation-delay:1.7s;
 }
 
 .flower{
   position:absolute;
+
   left:50%;
   top:25px;
+
   width:110px;
   height:110px;
-  transform:translateX(-50%) scale(0);
-  animation:bloom 2s 1.9s cubic-bezier(.2,.8,.2,1) forwards;
+
+  transform:
+    translateX(-50%)
+    scale(0);
+
+  animation:
+    bloom 2s 1.9s
+    cubic-bezier(.2,.8,.2,1)
+    forwards;
 }
 
 .petal{
   position:absolute;
+
   width:60px;
   height:60px;
+
   background:#f39abb;
-  border-radius:50% 50% 45% 45%;
+
+  border-radius:
+    50% 50% 45% 45%;
 }
 
-.petal:nth-child(1){top:0;left:25px}
-.petal:nth-child(2){top:25px;left:0}
-.petal:nth-child(3){top:25px;right:0}
-.petal:nth-child(4){bottom:0;left:25px}
+.petal:nth-child(1){
+  top:0;
+  left:25px;
+}
+
+.petal:nth-child(2){
+  top:25px;
+  left:0;
+}
+
+.petal:nth-child(3){
+  top:25px;
+  right:0;
+}
+
+.petal:nth-child(4){
+  bottom:0;
+  left:25px;
+}
 
 .center{
   position:absolute;
+
   width:38px;
   height:38px;
+
   background:#f5c85b;
+
   border-radius:50%;
+
   left:36px;
   top:36px;
+
   z-index:2;
 }
 
 @keyframes growStem{
-  from{transform:translateX(-50%) scaleY(0)}
-  to{transform:translateX(-50%) scaleY(1)}
+
+  from{
+    transform:
+      translateX(-50%)
+      scaleY(0);
+  }
+
+  to{
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+
 }
 
 @keyframes leafIn{
-  to{transform:rotate(-28deg) scale(1)}
+
+  to{
+    transform:
+      rotate(-28deg)
+      scale(1);
+  }
+
 }
 
 @keyframes bloom{
-  0%{transform:translateX(-50%) scale(0)}
-  70%{transform:translateX(-50%) scale(1.12)}
-  100%{transform:translateX(-50%) scale(1)}
+
+  0%{
+    transform:
+      translateX(-50%)
+      scale(0);
+  }
+
+  70%{
+    transform:
+      translateX(-50%)
+      scale(1.12);
+  }
+
+  100%{
+    transform:
+      translateX(-50%)
+      scale(1);
+  }
+
 }
 
-/* LOVE MOMENT */
+
+/* =========================
+   LOVE MOMENT
+========================= */
 
 .love-title{
-  font-size:clamp(2.6rem,6vw,4.5rem);
+  font-size:
+    clamp(2.6rem,6vw,4.5rem);
+
   margin-bottom:30px;
 }
 
 .love-message{
   min-height:150px;
+
   display:flex;
-  justify-content:center;
   align-items:center;
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(2rem,5vw,3.5rem);
+  justify-content:center;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size:
+    clamp(2rem,5vw,3.5rem);
+
   color:#9b3f61;
+
   padding:20px;
 }
 
 .love-heart{
   font-size:75px;
+
   display:block;
-  animation:heartbeat 1.5s infinite;
+
+  animation:
+    heartbeat 1.5s infinite;
 }
 
 @keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  15%{transform:scale(1.15)}
-  30%{transform:scale(1)}
-  45%{transform:scale(1.08)}
+
+  0%,100%{
+    transform:scale(1);
+  }
+
+  15%{
+    transform:scale(1.15);
+  }
+
+  30%{
+    transform:scale(1);
+  }
+
+  45%{
+    transform:scale(1.08);
+  }
+
 }
 
 .dots{
@@ -357,8 +601,11 @@ p{
 .dot{
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   background:#efb2c6;
+
   opacity:.35;
 }
 
@@ -366,160 +613,335 @@ p{
   opacity:1;
 }
 
-/* ENVELOPES */
+
+/* =========================
+   LETTER EXPERIENCE
+========================= */
 
 .letter-area{
-  width:min(650px,100%);
+  width:min(700px,100%);
   margin:auto;
 }
+
+
+/* LETTER HEADING */
+
+.letter-heading{
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
+}
+
+.letter-heading.hidden{
+  transform:translateY(-20px);
+  opacity:0;
+}
+
+
+/* ENVELOPE */
 
 .envelope{
   width:min(430px,90vw);
   height:280px;
+
   margin:30px auto;
+
   position:relative;
+
   cursor:pointer;
+
   perspective:1000px;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    max-height 1s ease,
+    margin 1s ease;
+}
+
+.envelope.disappear{
+  opacity:0;
+
+  transform:
+    translateY(-35px)
+    scale(.92);
+
+  max-height:0;
+
+  margin-top:0;
+  margin-bottom:0;
+
+  pointer-events:none;
 }
 
 .env-back{
   position:absolute;
   inset:0;
+
   background:#f5b4ca;
+
   border-radius:12px;
-  box-shadow:0 25px 60px rgba(130,57,86,.18);
+
+  box-shadow:
+    0 25px 60px
+    rgba(130,57,86,.18);
 }
 
 .env-front{
   position:absolute;
   inset:0;
+
   background:#f8c2d4;
-  clip-path:polygon(0 38%,50% 72%,100% 38%,100% 100%,0 100%);
-  border-radius:0 0 12px 12px;
+
+  clip-path:
+    polygon(
+      0 38%,
+      50% 72%,
+      100% 38%,
+      100% 100%,
+      0 100%
+    );
+
+  border-radius:
+    0 0 12px 12px;
+
   z-index:3;
 }
 
 .env-flap{
   position:absolute;
+
   left:0;
   top:0;
+
   width:100%;
   height:70%;
+
   background:#f0a7c0;
-  clip-path:polygon(0 0,100% 0,50% 72%);
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      50% 72%
+    );
+
   transform-origin:top;
-  transition:transform 1s ease;
+
+  transition:
+    transform 1s ease;
+
   z-index:4;
 }
 
 .seal{
   position:absolute;
+
   left:50%;
   top:48%;
-  transform:translate(-50%,-50%);
+
+  transform:
+    translate(-50%,-50%);
+
   width:55px;
   height:55px;
+
   border-radius:50%;
+
   background:#fff;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:25px;
+
   z-index:6;
-  box-shadow:0 8px 20px rgba(120,40,70,.15);
-  transition:opacity .4s;
+
+  box-shadow:
+    0 8px 20px
+    rgba(120,40,70,.15);
+
+  transition:
+    opacity .4s;
 }
 
 .envelope.open .env-flap{
-  transform:rotateX(180deg);
+  transform:
+    rotateX(180deg);
 }
 
 .envelope.open .seal{
   opacity:0;
 }
 
+
+/* =========================
+   LETTER
+========================= */
+
 .letter{
   max-height:0;
+
   overflow:hidden;
+
   opacity:0;
-  transform:translateY(20px);
-  transition:max-height 2s ease,opacity 1s ease,transform 1s ease;
+
+  transform:
+    translateY(30px);
+
+  transition:
+    max-height 1.5s ease,
+    opacity 1s ease,
+    transform 1s ease,
+    padding 1s ease;
+
   text-align:left;
-  background:rgba(255,255,255,.94);
+
+  background:
+    rgba(255,255,255,.96);
+
   border-radius:20px;
-  padding:0 30px;
-  box-shadow:0 20px 60px rgba(120,40,70,.1);
+
+  padding:
+    0 30px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(120,40,70,.1);
 }
 
 .letter.show{
-  max-height:55vh;
+  max-height:58vh;
+
   overflow-y:auto;
+
   opacity:1;
-  transform:translateY(0);
-  padding:35px 30px 25px;
+
+  transform:
+    translateY(0);
+
+  padding:
+    35px 30px 25px;
 }
 
 .letter p{
   white-space:pre-line;
-  font-family:"Cormorant Garamond",serif;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
   font-size:21px;
+
   line-height:1.55;
+
   color:#593243;
 }
 
 .signature{
   margin-top:25px;
+
   text-align:right;
-  font-family:"Cormorant Garamond",serif;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
   font-size:25px;
 }
 
-/* CONTINUE BUTTON */
+
+/* =========================
+   CONTINUE BUTTON
+========================= */
 
 .continue-wrap{
-  text-align:center;
+
   margin-top:22px;
+
   opacity:0;
-  transform:translateY(10px);
+
+  transform:
+    translateY(15px);
+
   pointer-events:none;
-  transition:opacity .8s ease,transform .8s ease;
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
 }
 
 .continue-wrap.show{
+
   opacity:1;
-  transform:translateY(0);
+
+  transform:
+    translateY(0);
+
   pointer-events:auto;
 }
 
 .continue-btn{
+
   border:none;
+
   background:#d95f8a;
+
   color:white;
-  padding:14px 30px;
+
+  padding:
+    14px 32px;
+
   border-radius:999px;
-  font-family:"DM Sans",sans-serif;
+
+  font-family:
+    "DM Sans",
+    sans-serif;
+
   font-size:15px;
+
   font-weight:600;
-  letter-spacing:.2px;
+
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(217,95,138,.25);
-  transition:transform .2s ease,box-shadow .2s ease;
+
+  box-shadow:
+    0 10px 25px
+    rgba(217,95,138,.25);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .continue-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 30px rgba(217,95,138,.32);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 30px
+    rgba(217,95,138,.32);
 }
 
 .continue-btn:active{
-  transform:translateY(0);
+
+  transform:
+    translateY(0);
 }
 
-/* FINAL */
+
+/* =========================
+   FINAL
+========================= */
 
 .final-heart{
+
   font-size:80px;
-  animation:heartbeat 1.6s infinite;
+
+  animation:
+    heartbeat 1.6s infinite;
+
   margin-bottom:25px;
 }
 
@@ -528,12 +950,18 @@ p{
 }
 
 .final p{
+
   font-size:20px;
+
   max-width:580px;
+
   margin:auto;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -542,37 +970,52 @@ p{
   }
 
   .bear-wrap{
+
     transform:scale(.85);
+
     margin-bottom:10px;
   }
 
   .flower-wrap{
+
     transform:scale(.8);
+
     margin-bottom:-10px;
   }
 
   .letter.show{
-    max-height:58vh;
-    padding:25px 20px 20px;
+
+    max-height:57vh;
+
+    padding:
+      25px 20px 20px;
   }
 
   .letter p{
+
     font-size:19px;
   }
 
   .envelope{
+
     height:230px;
   }
 
   .continue-wrap{
+
     margin-top:15px;
   }
 
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- FLOATING HEARTS -->
 
 <div class="heart h1">♡</div>
 <div class="heart h2">♡</div>
@@ -581,9 +1024,14 @@ p{
 <div class="heart h5">♡</div>
 
 
-<!-- BEAR -->
+<!-- =========================
+     BEAR
+========================= -->
 
-<section class="scene active" id="bear">
+<section
+  class="scene active"
+  id="bear"
+>
 
   <div class="content">
 
@@ -605,14 +1053,19 @@ p{
       </div>
 
       <div class="body"></div>
+
       <div class="arm left"></div>
       <div class="arm right"></div>
 
-      <div class="bear-heart">💗</div>
+      <div class="bear-heart">
+        💗
+      </div>
 
     </div>
 
-    <h2>Just a little something for you…</h2>
+    <h2>
+      Just a little something for you…
+    </h2>
 
     <p style="margin-top:15px;">
       Stay here for a moment. 🤍
@@ -623,38 +1076,58 @@ p{
 </section>
 
 
-<!-- FLOWER -->
+<!-- =========================
+     FLOWER
+========================= -->
 
-<section class="scene" id="flower">
+<section
+  class="scene"
+  id="flower"
+>
 
   <div class="content">
 
     <div class="flower-wrap">
 
       <div class="stem"></div>
+
       <div class="leaf"></div>
       <div class="leaf two"></div>
 
       <div class="flower">
+
         <div class="petal"></div>
         <div class="petal"></div>
         <div class="petal"></div>
         <div class="petal"></div>
+
         <div class="center"></div>
+
       </div>
 
     </div>
 
     <h2>
-      “The Lord is nigh unto them that are of a broken heart…”
+      “The Lord is nigh unto them
+      that are of a broken heart…”
     </h2>
 
-    <p style="margin-top:18px;font-size:17px;">
+    <p
+      style="
+        margin-top:18px;
+        font-size:17px;
+      "
+    >
       Psalm 34:18 · KJV
     </p>
 
-    <p style="margin-top:25px;">
-      You are never alone. We’ve got your back. 🤍
+    <p
+      style="
+        margin-top:25px;
+      "
+    >
+      You are never alone.
+      We’ve got your back. 🤍
     </p>
 
   </div>
@@ -662,9 +1135,14 @@ p{
 </section>
 
 
-<!-- LOVE -->
+<!-- =========================
+     LOVE MOMENT
+========================= -->
 
-<section class="scene" id="love">
+<section
+  class="scene"
+  id="love"
+>
 
   <div class="content">
 
@@ -672,11 +1150,16 @@ p{
       For the next 30 seconds…
     </h2>
 
-    <div class="love-message" id="loveMessage">
+    <div
+      class="love-message"
+      id="loveMessage"
+    >
 
       <div>
 
-        <span class="love-heart">♡</span>
+        <span class="love-heart">
+          ♡
+        </span>
 
         <div style="margin-top:10px;">
           Just breathe.
@@ -701,26 +1184,47 @@ p{
 </section>
 
 
-<!-- JEFF'S LETTER -->
+<!-- =========================
+     JEFF'S LETTER
+========================= -->
 
-<section class="scene" id="myLetter">
+<section
+  class="scene"
+  id="myLetter"
+>
 
   <div class="content letter-area">
 
-    <h2>A little letter from me 🤍</h2>
+    <h2
+      class="letter-heading"
+      id="heading1"
+    >
+      A little letter from me 🤍
+    </h2>
 
-    <div class="envelope" id="env1">
+
+    <div
+      class="envelope"
+      id="env1"
+    >
 
       <div class="env-back"></div>
+
       <div class="env-flap"></div>
+
       <div class="env-front"></div>
 
-      <div class="seal">♡</div>
+      <div class="seal">
+        ♡
+      </div>
 
     </div>
 
 
-    <div class="letter" id="letter1">
+    <div
+      class="letter"
+      id="letter1"
+    >
 
       <p>
 Hey there, I know you love letters, so I wrote this one for you today.
@@ -766,6 +1270,7 @@ I love you, Sades.
 Always. 🤍
       </p>
 
+
       <div class="signature">
         — Jeff 🤍
       </div>
@@ -773,10 +1278,16 @@ Always. 🤍
     </div>
 
 
-    <div class="continue-wrap" id="continue1">
+    <div
+      class="continue-wrap"
+      id="continue1"
+    >
 
-      <button class="continue-btn" onclick="goToBff()">
-        Continue 🤍
+      <button
+        class="continue-btn"
+        onclick="goToBff()"
+      >
+        Read Next 🤍
       </button>
 
     </div>
@@ -786,26 +1297,47 @@ Always. 🤍
 </section>
 
 
-<!-- MAM / BFF LETTER -->
+<!-- =========================
+     MAM / BFF LETTER
+========================= -->
 
-<section class="scene" id="bffLetter">
+<section
+  class="scene"
+  id="bffLetter"
+>
 
   <div class="content letter-area">
 
-    <h2>A little something from your BFF 🤍</h2>
+    <h2
+      class="letter-heading"
+      id="heading2"
+    >
+      A little something from your BFF 🤍
+    </h2>
 
-    <div class="envelope" id="env2">
+
+    <div
+      class="envelope"
+      id="env2"
+    >
 
       <div class="env-back"></div>
+
       <div class="env-flap"></div>
+
       <div class="env-front"></div>
 
-      <div class="seal">♡</div>
+      <div class="seal">
+        ♡
+      </div>
 
     </div>
 
 
-    <div class="letter" id="letter2">
+    <div
+      class="letter"
+      id="letter2"
+    >
 
       <p>
 Sadez. You are special.
@@ -841,6 +1373,7 @@ This way, it is evil that will be influenced to work for your good and not vice 
 I love you and always will. ♥️
       </p>
 
+
       <div class="signature">
         — Mam 🤍
       </div>
@@ -848,10 +1381,16 @@ I love you and always will. ♥️
     </div>
 
 
-    <div class="continue-wrap" id="continue2">
+    <div
+      class="continue-wrap"
+      id="continue2"
+    >
 
-      <button class="continue-btn" onclick="goToFinal()">
-        Continue 🤍
+      <button
+        class="continue-btn"
+        onclick="goToFinal()"
+      >
+        Finish 🤍
       </button>
 
     </div>
@@ -861,9 +1400,14 @@ I love you and always will. ♥️
 </section>
 
 
-<!-- FINAL -->
+<!-- =========================
+     FINAL
+========================= -->
 
-<section class="scene final" id="final">
+<section
+  class="scene final"
+  id="final"
+>
 
   <div class="content">
 
@@ -902,53 +1446,73 @@ I love you and always will. ♥️
 
 <script>
 
-/* -------------------------
+
+/* =========================
    SCENE CONTROL
--------------------------- */
+========================= */
 
 const scenes = [
+
   document.getElementById("bear"),
+
   document.getElementById("flower"),
+
   document.getElementById("love"),
+
   document.getElementById("myLetter"),
+
   document.getElementById("bffLetter"),
+
   document.getElementById("final")
+
 ];
 
 let current = 0;
 
+
 function showScene(index){
 
-  scenes.forEach((scene,i)=>{
-    scene.classList.toggle("active",i === index);
-  });
+  scenes.forEach(
+    (scene,i)=>{
+
+      scene.classList.toggle(
+        "active",
+        i === index
+      );
+
+    }
+  );
 
   current = index;
 
 }
 
 
-/* -------------------------
+/* =========================
    BEAR → FLOWER
--------------------------- */
+========================= */
 
 setTimeout(()=>{
+
   showScene(1);
+
 },6500);
 
 
-/* -------------------------
+/* =========================
    FLOWER → LOVE
--------------------------- */
+========================= */
 
 setTimeout(()=>{
+
   showScene(2);
+
 },12500);
 
 
-/* -------------------------
+/* =========================
    LOVE SEQUENCE
--------------------------- */
+========================= */
 
 const messages = [
 
@@ -964,105 +1528,199 @@ const messages = [
 
 ];
 
+
 const messageBox =
-  document.getElementById("loveMessage");
+  document.getElementById(
+    "loveMessage"
+  );
+
 
 const dots =
-  document.querySelectorAll(".dot");
+  document.querySelectorAll(
+    ".dot"
+  );
+
 
 let loveIndex = 0;
 
-const loveTimer = setInterval(()=>{
 
-  if(current !== 2){
-    clearInterval(loveTimer);
-    return;
-  }
+const loveTimer =
+  setInterval(()=>{
 
-  loveIndex++;
+    if(current !== 2){
 
-  if(loveIndex >= messages.length){
-    clearInterval(loveTimer);
-    return;
-  }
+      clearInterval(
+        loveTimer
+      );
 
-  messageBox.innerHTML = `
-    <div>
+      return;
 
-      <span class="love-heart">
-        ♡
-      </span>
+    }
 
-      <div style="margin-top:10px;">
-        ${messages[loveIndex]}
+
+    loveIndex++;
+
+
+    if(
+      loveIndex >=
+      messages.length
+    ){
+
+      clearInterval(
+        loveTimer
+      );
+
+      return;
+
+    }
+
+
+    messageBox.innerHTML = `
+
+      <div>
+
+        <span class="love-heart">
+          ♡
+        </span>
+
+        <div style="margin-top:10px;">
+          ${messages[loveIndex]}
+        </div>
+
       </div>
 
-    </div>
-  `;
+    `;
 
-  dots.forEach((dot,i)=>{
-    dot.classList.toggle(
-      "active",
-      i === loveIndex
+
+    dots.forEach(
+      (dot,i)=>{
+
+        dot.classList.toggle(
+          "active",
+          i === loveIndex
+        );
+
+      }
     );
-  });
 
-},5500);
+  },5500);
 
 
-/* -------------------------
+/* =========================
    LOVE → LETTER
--------------------------- */
+========================= */
 
 setTimeout(()=>{
 
   if(current === 2){
+
     showScene(3);
+
   }
 
 },30000);
 
 
-/* -------------------------
-   JEFF'S LETTER
--------------------------- */
+/* =========================
+   JEFF'S ENVELOPE
+========================= */
 
 const env1 =
-  document.getElementById("env1");
+  document.getElementById(
+    "env1"
+  );
 
 const letter1 =
-  document.getElementById("letter1");
+  document.getElementById(
+    "letter1"
+  );
 
 const continue1 =
-  document.getElementById("continue1");
+  document.getElementById(
+    "continue1"
+  );
+
+const heading1 =
+  document.getElementById(
+    "heading1"
+  );
 
 
-env1.addEventListener("click",()=>{
+env1.addEventListener(
+  "click",
+  ()=>{
 
-  if(env1.classList.contains("open")){
-    return;
+    if(
+      env1.classList.contains(
+        "open"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    env1.classList.add(
+      "open"
+    );
+
+
+    /*
+      First open the envelope.
+    */
+
+    setTimeout(()=>{
+
+      /*
+        Then bring the letter
+        forward.
+      */
+
+      letter1.classList.add(
+        "show"
+      );
+
+    },700);
+
+
+    /*
+      Then remove the envelope
+      naturally.
+    */
+
+    setTimeout(()=>{
+
+      env1.classList.add(
+        "disappear"
+      );
+
+      heading1.classList.add(
+        "hidden"
+      );
+
+    },1800);
+
+
+    /*
+      Finally reveal the button.
+    */
+
+    setTimeout(()=>{
+
+      continue1.classList.add(
+        "show"
+      );
+
+    },2500);
+
   }
-
-  env1.classList.add("open");
-
-  setTimeout(()=>{
-
-    letter1.classList.add("show");
-
-  },800);
-
-  setTimeout(()=>{
-
-    continue1.classList.add("show");
-
-  },2200);
-
-});
+);
 
 
-/* -------------------------
-   CONTINUE TO BFF
--------------------------- */
+/* =========================
+   GO TO BFF
+========================= */
 
 function goToBff(){
 
@@ -1071,46 +1729,100 @@ function goToBff(){
 }
 
 
-/* -------------------------
-   MAM / BFF LETTER
--------------------------- */
+/* =========================
+   MAM / BFF ENVELOPE
+========================= */
 
 const env2 =
-  document.getElementById("env2");
+  document.getElementById(
+    "env2"
+  );
 
 const letter2 =
-  document.getElementById("letter2");
+  document.getElementById(
+    "letter2"
+  );
 
 const continue2 =
-  document.getElementById("continue2");
+  document.getElementById(
+    "continue2"
+  );
+
+const heading2 =
+  document.getElementById(
+    "heading2"
+  );
 
 
-env2.addEventListener("click",()=>{
+env2.addEventListener(
+  "click",
+  ()=>{
 
-  if(env2.classList.contains("open")){
-    return;
+    if(
+      env2.classList.contains(
+        "open"
+      )
+    ){
+
+      return;
+
+    }
+
+
+    env2.classList.add(
+      "open"
+    );
+
+
+    /*
+      Open first.
+    */
+
+    setTimeout(()=>{
+
+      letter2.classList.add(
+        "show"
+      );
+
+    },700);
+
+
+    /*
+      Envelope disappears.
+    */
+
+    setTimeout(()=>{
+
+      env2.classList.add(
+        "disappear"
+      );
+
+      heading2.classList.add(
+        "hidden"
+      );
+
+    },1800);
+
+
+    /*
+      Finish button appears.
+    */
+
+    setTimeout(()=>{
+
+      continue2.classList.add(
+        "show"
+      );
+
+    },2500);
+
   }
-
-  env2.classList.add("open");
-
-  setTimeout(()=>{
-
-    letter2.classList.add("show");
-
-  },800);
-
-  setTimeout(()=>{
-
-    continue2.classList.add("show");
-
-  },2200);
-
-});
+);
 
 
-/* -------------------------
-   CONTINUE TO FINAL
--------------------------- */
+/* =========================
+   FINAL
+========================= */
 
 function goToFinal(){
 
@@ -1119,14 +1831,16 @@ function goToFinal(){
 }
 
 
-/* -------------------------
+/* =========================
    SAFETY FALLBACK
--------------------------- */
+========================= */
 
 setTimeout(()=>{
 
   if(current === 0){
+
     showScene(1);
+
   }
 
 },8000);
