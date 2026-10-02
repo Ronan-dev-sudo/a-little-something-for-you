@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Something For You 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  background:#fff8fb;
+  color:#4b3b42;
+  font-family:"DM Sans", sans-serif;
+}
+
+/* BACKGROUND */
+
+.background{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,190,215,.55), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255,220,232,.7), transparent 35%),
+    radial-gradient(circle at 50% 100%, rgba(255,205,225,.55), transparent 40%),
+    linear-gradient(135deg,#fffafd,#fff4f8,#ffffff);
+}
+
+.glow{
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:rgba(255,185,215,.22);
+  filter:blur(70px);
+  animation:floatGlow 9s ease-in-out infinite alternate;
+}
+
+.glow.one{
+  top:-120px;
+  left:-100px;
+}
+
+.glow.two{
+  right:-140px;
+  bottom:-120px;
+  animation-delay:2s;
+}
+
+@keyframes floatGlow{
+  from{
+    transform:translate(0,0) scale(1);
+  }
+  to{
+    transform:translate(50px,30px) scale(1.15);
+  }
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+  position:absolute;
+  font-size:20px;
+  opacity:.55;
+  animation:floatHeart linear infinite;
+}
+
+.h1{left:8%; bottom:-40px; animation-duration:10s;}
+.h2{left:22%; bottom:-50px; animation-duration:13s; animation-delay:2s;}
+.h3{left:42%; bottom:-40px; animation-duration:11s; animation-delay:4s;}
+.h4{left:65%; bottom:-50px; animation-duration:14s; animation-delay:1s;}
+.h5{left:82%; bottom:-40px; animation-duration:12s; animation-delay:3s;}
+
+@keyframes floatHeart{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:0;
+  }
+  15%{
+    opacity:.55;
+  }
+  85%{
+    opacity:.4;
+  }
+  100%{
+    transform:translateY(-115vh) rotate(20deg);
+    opacity:0;
+  }
+}
+
+/* MAIN */
+
+.scene{
+  position:relative;
+  z-index:5;
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.content{
+  max-width:700px;
+  animation:appear 2s ease forwards;
+}
+
+.small{
+  font-size:13px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#b77c91;
+  margin-bottom:24px;
+}
+
+h1{
+  font-family:"Playfair Display", serif;
+  font-size:clamp(48px,8vw,82px);
+  font-weight:400;
+  line-height:1.05;
+  color:#493941;
+  margin-bottom:28px;
+}
+
+.message{
+  max-width:500px;
+  margin:auto;
+  font-size:17px;
+  line-height:1.8;
+  color:#725f68;
+}
+
+.message span{
+  display:block;
+  margin-top:8px;
+}
+
+.start{
+  margin-top:40px;
+  padding:14px 32px;
+  border:none;
+  border-radius:40px;
+  background:#e9a8c2;
+  color:white;
+  font-family:"DM Sans",sans-serif;
+  font-size:14px;
+  letter-spacing:1px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(211,133,165,.25);
+  transition:.3s ease;
+}
+
+.start:hover{
+  transform:translateY(-3px);
+  background:#dc91b0;
+  box-shadow:0 15px 35px rgba(211,133,165,.35);
+}
+
+.bottom{
+  position:absolute;
+  bottom:25px;
+  left:0;
+  right:0;
+  font-size:11px;
+  letter-spacing:3px;
+  color:#c39baa;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background">
+
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="heart h1">♡</div>
+  <div class="heart h2">♡</div>
+  <div class="heart h3">♡</div>
+  <div class="heart h4">♡</div>
+  <div class="heart h5">♡</div>
+
+</div>
+
+<section class="scene">
+
+  <div class="content">
+
+    <div class="small">A little something for you</div>
+
+    <h1>Hey you… 🤍</h1>
+
+    <div class="message">
+      I know things have been a little hard recently…
+
+      <span>
+        So we made you a little something.
+      </span>
+    </div>
+
+    <button class="start" onclick="startExperience()">
+      Start ♡
+    </button>
+
+  </div>
+
+  <div class="bottom">
+    MADE WITH LOVE · 🤍
+  </div>
+
+</section>
+
+<script>
+
+function startExperience(){
+
+  document.querySelector(".content").style.transition = "1s ease";
+  document.querySelector(".content").style.opacity = "0";
+  document.querySelector(".content").style.transform = "translateY(-20px)";
+
+  setTimeout(function(){
+
+    document.querySelector(".content").innerHTML = `
+      <div class="small">Just for a moment</div>
+      <h1>Take a little breath. 🩷</h1>
+      <div class="message">
+        There's nowhere you need to rush to right now.
+        <span>Just stay here for a little while.</span>
+      </div>
+    `;
+
+    document.querySelector(".content").style.transform = "translateY(0)";
+    document.querySelector(".content").style.opacity = "1";
+
+  },1000);
+
+}
+
+</script>
+
+</body>
+</html>
