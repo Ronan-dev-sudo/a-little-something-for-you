@@ -3,1390 +3,812 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>A Little Something For You 🤍</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
 }
 
-html,
-body{
-  width:100%;
-  height:100%;
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'DM Sans', sans-serif;
+  background: #fff7fb;
+  color: #54243b;
+  overflow-x: hidden;
 }
 
-body{
-  overflow:hidden;
-  font-family:"DM Sans",sans-serif;
-  color:#492536;
-  background:#fff;
+body {
+  min-height: 100vh;
 }
 
-
-/* ==================================================
-   GENERAL SCENES
-================================================== */
-
-.scene{
-  position:absolute;
-  inset:0;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:28px;
-
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-
-  transform:translateY(18px);
-
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
-
-  background:
-    radial-gradient(
-      circle at 12% 12%,
-      rgba(255,170,204,.30),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 88% 82%,
-      rgba(255,214,229,.38),
-      transparent 35%
-    ),
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #fff7fa
-    );
+.scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 28px 18px;
 }
 
-.scene.active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-  transform:translateY(0);
+.scene.active {
+  display: flex;
 }
 
-.content{
-  width:min(850px,100%);
-  text-align:center;
-  position:relative;
-  z-index:3;
-}
-
-h1,
-h2{
-  font-family:"Cormorant Garamond",serif;
-}
-
-h1{
-  font-size:clamp(3.4rem,8vw,6.5rem);
-  line-height:.92;
-}
-
-h2{
-  font-size:clamp(2.5rem,6vw,4.5rem);
-  line-height:1;
-}
-
-p{
-  line-height:1.8;
-}
-
-
-/* ==================================================
+/* =========================
    INTRO
-================================================== */
+========================= */
 
-.intro-kicker{
-  font-size:14px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#b45b7c;
-  margin-bottom:18px;
-}
-
-.intro-sub{
-  max-width:540px;
-  margin:24px auto 35px;
-  font-size:18px;
-  color:#755463;
-}
-
-.primary-btn{
-  border:none;
-
-  background:#d95f8a;
-  color:white;
-
-  padding:16px 34px;
-
-  border-radius:999px;
-
-  font-family:"DM Sans",sans-serif;
-  font-size:15px;
-  font-weight:600;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 12px 30px
-    rgba(217,95,138,.28);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 17px 35px
-    rgba(217,95,138,.34);
-}
-
-.primary-btn:active{
-  transform:translateY(0);
-}
-
-
-/* ==================================================
-   FLOATING HEARTS
-================================================== */
-
-.heart{
-  position:absolute;
-
-  color:#f3a0bd;
-
-  font-size:22px;
-
-  opacity:.5;
-
-  animation:
-    float 8s infinite ease-in-out;
-
-  z-index:1;
-}
-
-.h1{
-  left:8%;
-  top:20%;
-}
-
-.h2{
-  left:18%;
-  bottom:18%;
-  animation-delay:2s;
-}
-
-.h3{
-  right:12%;
-  top:17%;
-  animation-delay:1s;
-}
-
-.h4{
-  right:20%;
-  bottom:22%;
-  animation-delay:3s;
-}
-
-.h5{
-  left:50%;
-  top:9%;
-  animation-delay:4s;
-}
-
-@keyframes float{
-
-  0%,100%{
-    transform:
-      translateY(0)
-      rotate(-8deg);
-  }
-
-  50%{
-    transform:
-      translateY(-22px)
-      rotate(8deg);
-  }
-
-}
-
-
-/* ==================================================
-   BEAR
-================================================== */
-
-.bear-wrap{
-  width:250px;
-  height:250px;
-
-  margin:0 auto 35px;
-
-  position:relative;
-}
-
-.bear{
-  width:150px;
-  height:150px;
-
-  background:#c98f72;
-
-  border-radius:
-    48% 48% 43% 43%;
-
-  position:absolute;
-
-  left:50%;
-  top:50px;
-
-  transform:translateX(-50%);
-
-  box-shadow:
-    inset 0 -8px 0
-    rgba(0,0,0,.05);
-}
-
-.ear{
-  width:52px;
-  height:52px;
-
-  background:#c98f72;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  top:-15px;
-}
-
-.ear:after{
-  content:"";
-
-  width:27px;
-  height:27px;
-
-  background:#eab3a2;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  left:13px;
-  top:13px;
-}
-
-.ear.left{
-  left:5px;
-}
-
-.ear.right{
-  right:5px;
-}
-
-.eye{
-  width:9px;
-  height:9px;
-
-  background:#3a2630;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  top:58px;
-}
-
-.eye.left{
-  left:45px;
-}
-
-.eye.right{
-  right:45px;
-}
-
-.muzzle{
-  width:60px;
-  height:45px;
-
-  background:#e9b39d;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  left:50%;
-  top:70px;
-
-  transform:translateX(-50%);
-}
-
-.nose{
-  width:20px;
-  height:15px;
-
-  background:#51333b;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  left:50%;
-  top:78px;
-
-  transform:translateX(-50%);
-
-  z-index:2;
-}
-
-.mouth{
-  width:22px;
-  height:11px;
-
-  border-bottom:
-    3px solid #51333b;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  left:50%;
-  top:91px;
-
-  transform:translateX(-50%);
-}
-
-.body{
-  width:105px;
-  height:90px;
-
-  background:#c98f72;
-
-  border-radius:50%;
-
-  position:absolute;
-
-  left:50%;
-  top:130px;
-
-  transform:translateX(-50%);
-}
-
-.arm{
-  width:35px;
-  height:75px;
-
-  background:#c98f72;
-
-  border-radius:40px;
-
-  position:absolute;
-
-  top:130px;
-}
-
-.arm.left{
-  left:42px;
-  transform:rotate(25deg);
-}
-
-.arm.right{
-  right:42px;
-  transform:rotate(-25deg);
-}
-
-.bear-heart{
-  position:absolute;
-
-  left:50%;
-  top:142px;
-
-  transform:translateX(-50%);
-
-  font-size:48px;
-
-  z-index:5;
-}
-
-
-/* ==================================================
-   FLOWER
-================================================== */
-
-.flower-wrap{
-  width:220px;
-  height:270px;
-
-  margin:0 auto 20px;
-
-  position:relative;
-}
-
-.stem{
-  position:absolute;
-
-  width:8px;
-  height:145px;
-
-  background:#82b889;
-
-  left:50%;
-  bottom:15px;
-
-  transform:
-    translateX(-50%)
-    scaleY(0);
-
-  border-radius:10px;
-
-  transform-origin:bottom;
-
-  animation:
-    growStem 2s ease forwards;
-}
-
-.leaf{
-  width:70px;
-  height:35px;
-
-  background:#9dcc99;
-
-  border-radius:
-    100% 0 100% 0;
-
-  position:absolute;
-
-  left:calc(50% - 8px);
-  bottom:75px;
-
-  transform:
-    rotate(-28deg)
-    scale(0);
-
-  animation:
-    leafIn 1s 1.4s ease forwards;
-}
-
-.leaf.two{
-  left:auto;
-
-  right:calc(50% - 8px);
-
-  transform:
-    rotate(208deg)
-    scale(0);
-
-  animation-delay:1.7s;
-}
-
-.flower{
-  position:absolute;
-
-  left:50%;
-  top:25px;
-
-  width:110px;
-  height:110px;
-
-  transform:
-    translateX(-50%)
-    scale(0);
-
-  animation:
-    bloom 2s 1.9s
-    cubic-bezier(.2,.8,.2,1)
-    forwards;
-}
-
-.petal{
-  position:absolute;
-
-  width:60px;
-  height:60px;
-
-  background:#f39abb;
-
-  border-radius:
-    50% 50% 45% 45%;
-}
-
-.petal:nth-child(1){
-  top:0;
-  left:25px;
-}
-
-.petal:nth-child(2){
-  top:25px;
-  left:0;
-}
-
-.petal:nth-child(3){
-  top:25px;
-  right:0;
-}
-
-.petal:nth-child(4){
-  bottom:0;
-  left:25px;
-}
-
-.center{
-  position:absolute;
-
-  width:38px;
-  height:38px;
-
-  background:#f5c85b;
-
-  border-radius:50%;
-
-  left:36px;
-  top:36px;
-
-  z-index:2;
-}
-
-@keyframes growStem{
-
-  from{
-    transform:
-      translateX(-50%)
-      scaleY(0);
-  }
-
-  to{
-    transform:
-      translateX(-50%)
-      scaleY(1);
-  }
-
-}
-
-@keyframes leafIn{
-
-  to{
-    transform:
-      rotate(-28deg)
-      scale(1);
-  }
-
-}
-
-@keyframes bloom{
-
-  0%{
-    transform:
-      translateX(-50%)
-      scale(0);
-  }
-
-  70%{
-    transform:
-      translateX(-50%)
-      scale(1.12);
-  }
-
-  100%{
-    transform:
-      translateX(-50%)
-      scale(1);
-  }
-
-}
-
-
-/* ==================================================
-   LOVE MOMENT
-================================================== */
-
-.love-title{
-  font-size:
-    clamp(2.6rem,6vw,4.5rem);
-
-  margin-bottom:30px;
-}
-
-.love-message{
-  min-height:150px;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-family:
-    "Cormorant Garamond",
-    serif;
-
-  font-size:
-    clamp(2rem,5vw,3.5rem);
-
-  color:#9b3f61;
-
-  padding:20px;
-}
-
-.love-heart{
-  font-size:75px;
-
-  display:block;
-
-  animation:
-    heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  15%{
-    transform:scale(1.15);
-  }
-
-  30%{
-    transform:scale(1);
-  }
-
-  45%{
-    transform:scale(1.08);
-  }
-
-}
-
-.dots{
-  display:flex;
-
-  justify-content:center;
-
-  gap:8px;
-
-  margin-top:25px;
-}
-
-.dot{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:#efb2c6;
-
-  opacity:.35;
-}
-
-.dot.active{
-  opacity:1;
-}
-
-
-/* ==================================================
-   LETTER SCENES
-================================================== */
-
-.letter-scene{
-  align-items:center;
-}
-
-.letter-stage{
-  width:min(720px,100%);
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  justify-content:center;
-}
-
-
-/* Heading */
-
-.letter-heading{
-  margin-bottom:24px;
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-
-.letter-heading.hide{
-  opacity:0;
-
-  transform:
-    translateY(-15px);
-}
-
-
-/* Envelope */
-
-.envelope{
-  width:min(430px,88vw);
-  height:270px;
-
-  position:relative;
-
-  cursor:pointer;
-
-  perspective:1000px;
-
-  margin:0 auto;
-
-  transition:
-    opacity 1s ease,
-    transform 1s ease,
-    height 1s ease,
-    margin 1s ease;
-}
-
-.envelope.disappear{
-
-  opacity:0;
-
-  transform:
-    translateY(-35px)
-    scale(.90);
-
-  height:0;
-
-  margin:0;
-
-  pointer-events:none;
-}
-
-.env-back{
-  position:absolute;
-
-  inset:0;
-
-  background:#f5b4ca;
-
-  border-radius:12px;
-
-  box-shadow:
-    0 25px 60px
-    rgba(130,57,86,.18);
-}
-
-.env-front{
-  position:absolute;
-
-  inset:0;
-
-  background:#f8c2d4;
-
-  clip-path:
-    polygon(
-      0 38%,
-      50% 72%,
-      100% 38%,
-      100% 100%,
-      0 100%
-    );
-
-  border-radius:
-    0 0 12px 12px;
-
-  z-index:3;
-}
-
-.env-flap{
-  position:absolute;
-
-  left:0;
-  top:0;
-
-  width:100%;
-  height:70%;
-
-  background:#f0a7c0;
-
-  clip-path:
-    polygon(
-      0 0,
-      100% 0,
-      50% 72%
-    );
-
-  transform-origin:top;
-
-  transition:
-    transform 1s ease;
-
-  z-index:4;
-}
-
-.seal{
-  position:absolute;
-
-  left:50%;
-  top:48%;
-
-  transform:
-    translate(-50%,-50%);
-
-  width:55px;
-  height:55px;
-
-  border-radius:50%;
-
-  background:#fff;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:25px;
-
-  z-index:6;
-
-  box-shadow:
-    0 8px 20px
-    rgba(120,40,70,.15);
-
-  transition:
-    opacity .5s ease;
-}
-
-.envelope.open .env-flap{
-  transform:
-    rotateX(180deg);
-}
-
-.envelope.open .seal{
-  opacity:0;
-}
-
-
-/* ==================================================
-   LETTER CARD
-================================================== */
-
-.letter-card{
-  width:min(680px,100%);
-
-  max-height:0;
-
-  opacity:0;
-
-  overflow:hidden;
-
-  transform:
-    translateY(25px);
-
+#intro {
   background:
-    rgba(255,255,255,.97);
-
-  border-radius:22px;
-
-  box-shadow:
-    0 22px 65px
-    rgba(120,40,70,.12);
-
-  transition:
-    max-height 1.2s ease,
-    opacity 1s ease,
-    transform 1s ease,
-    padding 1.2s ease;
+    radial-gradient(circle at 15% 20%, rgba(255,182,211,.55), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(255,214,232,.65), transparent 32%),
+    linear-gradient(145deg, #fff7fb, #ffeaf4);
 }
 
-.letter-card.show{
-
-  max-height:60vh;
-
-  opacity:1;
-
-  transform:
-    translateY(0);
-
-  padding:
-    30px 30px 25px;
+.intro-box {
+  width: min(650px, 100%);
+  text-align: center;
+  padding: 34px 22px;
 }
 
-.letter-text{
-
-  max-height:48vh;
-
-  overflow-y:auto;
-
-  padding-right:8px;
-
-  text-align:left;
+.kicker {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c85a88;
+  margin-bottom: 18px;
 }
 
-.letter-text::-webkit-scrollbar{
-  width:5px;
+.intro-box h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 10vw, 72px);
+  margin: 0 0 18px;
+  color: #74264c;
 }
 
-.letter-text::-webkit-scrollbar-thumb{
-  background:#efb2c6;
-  border-radius:20px;
+.intro-box p {
+  max-width: 500px;
+  margin: 0 auto 30px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #754d60;
 }
 
-.letter-text p{
-
-  white-space:pre-line;
-
-  font-family:
-    "Cormorant Garamond",
-    serif;
-
-  font-size:21px;
-
-  line-height:1.55;
-
-  color:#593243;
+.main-btn {
+  border: 0;
+  background: #d95b8d;
+  color: white;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(217,91,141,.25);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.signature{
-
-  margin-top:25px;
-
-  text-align:right;
-
-  font-family:
-    "Cormorant Garamond",
-    serif;
-
-  font-size:25px;
+.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(217,91,141,.32);
 }
 
+/* =========================
+   BEAR
+========================= */
 
-/* ==================================================
-   NEXT BUTTON
-================================================== */
-
-.next-area{
-
-  margin-top:20px;
-
-  opacity:0;
-
-  transform:
-    translateY(12px);
-
-  pointer-events:none;
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+#bear {
+  background: linear-gradient(180deg, #fff8fb, #ffeaf3);
+  flex-direction: column;
 }
 
-.next-area.show{
-
-  opacity:1;
-
-  transform:
-    translateY(0);
-
-  pointer-events:auto;
+.bear-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 7vw, 44px);
+  color: #7b294f;
+  margin-bottom: 34px;
 }
 
-.next-btn{
-
-  border:none;
-
-  background:#d95f8a;
-
-  color:#fff;
-
-  padding:
-    14px 32px;
-
-  border-radius:999px;
-
-  font-family:
-    "DM Sans",
-    sans-serif;
-
-  font-size:15px;
-
-  font-weight:600;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 10px 25px
-    rgba(217,95,138,.25);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
+.bear {
+  position: relative;
+  width: 180px;
+  height: 175px;
 }
 
-.next-btn:hover{
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 14px 30px
-    rgba(217,95,138,.32);
+.ear {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: #c98568;
+  border-radius: 50%;
+  top: 0;
+  z-index: 1;
 }
 
+.ear.left {
+  left: 10px;
+}
 
-/* ==================================================
+.ear.right {
+  right: 10px;
+}
+
+.ear::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  background: #efb2a5;
+  border-radius: 50%;
+}
+
+.face {
+  position: absolute;
+  width: 145px;
+  height: 135px;
+  background: #d99a78;
+  border-radius: 48% 48% 44% 44%;
+  left: 17px;
+  top: 22px;
+  z-index: 2;
+}
+
+.eye {
+  position: absolute;
+  width: 10px;
+  height: 13px;
+  background: #3f2930;
+  border-radius: 50%;
+  top: 52px;
+}
+
+.eye.left {
+  left: 42px;
+}
+
+.eye.right {
+  right: 42px;
+}
+
+.muzzle {
+  position: absolute;
+  width: 65px;
+  height: 48px;
+  background: #efc3a5;
+  border-radius: 50%;
+  left: 40px;
+  top: 68px;
+}
+
+.nose {
+  position: absolute;
+  width: 17px;
+  height: 12px;
+  background: #4b3034;
+  border-radius: 50%;
+  left: 24px;
+  top: 12px;
+}
+
+.mouth {
+  position: absolute;
+  width: 18px;
+  height: 10px;
+  border-bottom: 2px solid #4b3034;
+  border-radius: 50%;
+  left: 23px;
+  top: 22px;
+}
+
+.bear-heart {
+  position: absolute;
+  z-index: 4;
+  bottom: -8px;
+  left: 57px;
+  width: 66px;
+  height: 60px;
+  background: #e96d9d;
+  transform: rotate(-45deg);
+  border-radius: 8px;
+}
+
+.bear-heart::before,
+.bear-heart::after {
+  content: "";
+  position: absolute;
+  width: 66px;
+  height: 60px;
+  background: #e96d9d;
+  border-radius: 50%;
+}
+
+.bear-heart::before {
+  top: -33px;
+  left: 0;
+}
+
+.bear-heart::after {
+  top: 0;
+  left: 33px;
+}
+
+.bear-caption {
+  margin-top: 45px;
+  font-size: 15px;
+  color: #8c6070;
+}
+
+/* =========================
+   FLOWER
+========================= */
+
+#flower {
+  background: linear-gradient(180deg, #fff9fc, #fff0f6);
+  flex-direction: column;
+  text-align: center;
+}
+
+.flower {
+  position: relative;
+  width: 120px;
+  height: 180px;
+  margin-bottom: 25px;
+}
+
+.stem {
+  position: absolute;
+  width: 7px;
+  height: 115px;
+  background: #7aaa70;
+  left: 57px;
+  top: 60px;
+  border-radius: 10px;
+}
+
+.leaf {
+  position: absolute;
+  width: 55px;
+  height: 25px;
+  background: #8ebc7f;
+  border-radius: 100% 0 100% 0;
+  top: 105px;
+}
+
+.leaf.left {
+  left: 5px;
+  transform: rotate(-25deg);
+}
+
+.leaf.right {
+  right: 5px;
+  transform: rotate(25deg) scaleX(-1);
+}
+
+.flower-head {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  left: 20px;
+  top: 5px;
+}
+
+.petal {
+  position: absolute;
+  width: 38px;
+  height: 48px;
+  background: #f29bc0;
+  border-radius: 50%;
+  left: 21px;
+  top: 16px;
+  transform-origin: 50% 85%;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translateY(-17px); }
+.petal:nth-child(2) { transform: rotate(72deg) translateY(-17px); }
+.petal:nth-child(3) { transform: rotate(144deg) translateY(-17px); }
+.petal:nth-child(4) { transform: rotate(216deg) translateY(-17px); }
+.petal:nth-child(5) { transform: rotate(288deg) translateY(-17px); }
+
+.flower-center {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f4c95d;
+  left: 46px;
+  top: 31px;
+}
+
+.scripture {
+  width: min(600px, 100%);
+}
+
+.scripture p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(23px, 5vw, 34px);
+  line-height: 1.4;
+  margin: 0 0 15px;
+  color: #6c2d4b;
+}
+
+.scripture small {
+  color: #a46682;
+}
+
+/* =========================
+   LOVE
+========================= */
+
+#love {
+  background: linear-gradient(180deg, #fff7fb, #ffe7f1);
+  text-align: center;
+  flex-direction: column;
+}
+
+.love-content {
+  width: min(650px, 100%);
+}
+
+.love-heart {
+  font-size: 70px;
+  animation: pulse 1.5s infinite ease-in-out;
+  margin-bottom: 25px;
+}
+
+.love-message {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(27px, 7vw, 43px);
+  line-height: 1.35;
+  color: #75284e;
+  min-height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+/* =========================
+   LETTER SCENES
+========================= */
+
+.letter-scene {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255,188,215,.4), transparent 28%),
+    radial-gradient(circle at 90% 85%, rgba(255,208,228,.5), transparent 30%),
+    #fff8fb;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
+
+.letter-heading {
+  text-align: center;
+  margin: 0 0 28px;
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.letter-heading.hide {
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.letter-heading .small {
+  color: #c35d89;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.letter-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 7vw, 42px);
+  color: #712747;
+  margin: 0;
+}
+
+/* This wrapper controls the envelope separately */
+.envelope-zone {
+  width: min(430px, 92vw);
+  height: 270px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.envelope-zone.gone {
+  opacity: 0;
+  transform: translateY(-30px);
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.envelope {
+  position: relative;
+  width: min(390px, 88vw);
+  height: 235px;
+  background: #f6a8c8;
+  border-radius: 14px;
+  box-shadow: 0 20px 55px rgba(157,72,111,.18);
+  cursor: pointer;
+  transition: transform .5s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #ef8fba;
+  border-radius: 14px;
+}
+
+.envelope-flap {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: calc(min(390px, 88vw) / 2) solid transparent;
+  border-right: calc(min(390px, 88vw) / 2) solid transparent;
+  border-top: 125px solid #f8bad5;
+  transform-origin: top center;
+  transition: transform .7s ease;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-front {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 125px;
+  background: #f29bc1;
+  clip-path: polygon(0 100%, 50% 20%, 100% 100%);
+}
+
+.envelope-seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -15%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d9578b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(175,61,105,.25);
+  transition: opacity .3s ease;
+}
+
+.envelope.open .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-label {
+  position: absolute;
+  z-index: 6;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* =========================
+   LETTER CARD
+========================= */
+
+.letter-zone {
+  width: min(680px, 94vw);
+  display: none;
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .6s ease, transform .6s ease;
+  flex-direction: column;
+  align-items: center;
+}
+
+.letter-zone.show {
+  display: flex;
+  animation: letterRise .7s ease forwards;
+}
+
+@keyframes letterRise {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-card {
+  width: 100%;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(216,113,153,.18);
+  border-radius: 24px;
+  padding: 28px 26px;
+  box-shadow: 0 20px 65px rgba(130,60,91,.13);
+}
+
+.letter-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #654455;
+  white-space: pre-line;
+  max-height: 54vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.letter-signature {
+  margin-top: 22px;
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: #873354;
+}
+
+.next-btn {
+  margin-top: 22px;
+  border: 0;
+  background: #d95b8d;
+  color: white;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(217,91,141,.25);
+  display: none;
+}
+
+.next-btn.show {
+  display: inline-block;
+  animation: fadeUp .5s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
    FINAL
-================================================== */
+========================= */
 
-.final-heart{
-
-  font-size:80px;
-
-  margin-bottom:25px;
-
-  animation:
-    heartbeat 1.6s infinite;
+#final {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,179,210,.45), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(255,207,228,.5), transparent 32%),
+    #fff6fa;
+  text-align: center;
 }
 
-.final h2{
-  margin-bottom:25px;
+.final-box {
+  width: min(650px, 100%);
 }
 
-.final p{
-
-  font-size:20px;
-
-  max-width:580px;
-
-  margin:auto;
+.final-heart {
+  font-size: 58px;
+  margin-bottom: 20px;
 }
 
+.final-box h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(35px, 8vw, 58px);
+  color: #702547;
+  margin: 0 0 20px;
+}
 
-/* ==================================================
+.final-box p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #765264;
+}
+
+/* =========================
    MOBILE
-================================================== */
+========================= */
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-  .scene{
-    padding:18px;
+  .scene {
+    padding: 24px 14px;
   }
 
-  .bear-wrap{
-
-    transform:scale(.82);
-
-    margin-bottom:0;
+  .letter-scene {
+    justify-content: flex-start;
+    padding-top: 28px;
   }
 
-  .flower-wrap{
-
-    transform:scale(.78);
-
-    margin-bottom:-10px;
+  .letter-heading {
+    margin-bottom: 18px;
   }
 
-  .letter-heading{
-
-    font-size:
-      clamp(2.2rem,9vw,3.5rem);
+  .letter-heading h2 {
+    font-size: 30px;
   }
 
-  .envelope{
-
-    height:220px;
+  .envelope-zone {
+    height: 245px;
   }
 
-  .letter-card.show{
-
-    max-height:62vh;
-
-    padding:
-      22px 20px 20px;
+  .envelope {
+    height: 205px;
   }
 
-  .letter-text{
-
-    max-height:49vh;
+  .envelope-flap {
+    border-top-width: 105px;
   }
 
-  .letter-text p{
-
-    font-size:19px;
+  .envelope-front {
+    height: 110px;
   }
 
-  .next-area{
-
-    margin-top:14px;
+  .letter-card {
+    padding: 23px 19px;
+    border-radius: 20px;
   }
 
+  .letter-text {
+    font-size: 15px;
+    line-height: 1.7;
+    max-height: 58vh;
+  }
+
+  .next-btn {
+    margin-top: 18px;
+    padding: 14px 22px;
+  }
+
+  .bear-caption {
+    margin-top: 35px;
+  }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- FLOATING HEARTS -->
-
-<div class="heart h1">♡</div>
-<div class="heart h2">♡</div>
-<div class="heart h3">♡</div>
-<div class="heart h4">♡</div>
-<div class="heart h5">♡</div>
-
-
-<!-- ==================================================
-     INTRO
-================================================== -->
-
-<section
-  class="scene active"
-  id="intro"
->
-
-  <div class="content">
-
-    <div class="intro-kicker">
-      A little something
-    </div>
-
-    <h1>
-      Hey you… 🤍
-    </h1>
-
-    <p class="intro-sub">
+<!-- INTRO -->
+<section id="intro" class="scene active">
+  <div class="intro-box">
+    <div class="kicker">A little something</div>
+    <h1>Hey you… 🤍</h1>
+    <p>
       I know things have been a little hard recently…
-      <br>
       so we made you a little something.
     </p>
-
-    <button
-      class="primary-btn"
-      onclick="startExperience()"
-    >
+    <button class="main-btn" onclick="startExperience()">
       Open this for me 🤍
     </button>
-
   </div>
-
 </section>
 
+<!-- BEAR -->
+<section id="bear" class="scene">
+  <div class="bear-title">Just a little reminder…</div>
 
-<!-- ==================================================
-     BEAR
-================================================== -->
+  <div class="bear">
+    <div class="ear left"></div>
+    <div class="ear right"></div>
 
-<section
-  class="scene"
-  id="bear"
->
+    <div class="face">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
 
-  <div class="content">
-
-    <div class="bear-wrap">
-
-      <div class="bear">
-
-        <div class="ear left"></div>
-        <div class="ear right"></div>
-
-        <div class="muzzle"></div>
-
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-
+      <div class="muzzle">
         <div class="nose"></div>
         <div class="mouth"></div>
-
       </div>
-
-      <div class="body"></div>
-
-      <div class="arm left"></div>
-      <div class="arm right"></div>
-
-      <div class="bear-heart">
-        💗
-      </div>
-
     </div>
 
-    <h2>
-      Just a little something for you…
-    </h2>
-
-    <p style="margin-top:15px;">
-      Stay here for a moment. 🤍
-    </p>
-
+    <div class="bear-heart"></div>
   </div>
 
+  <div class="bear-caption">Someone thought you needed a little hug. 🧸</div>
 </section>
 
+<!-- FLOWER -->
+<section id="flower" class="scene">
+  <div class="flower">
+    <div class="stem"></div>
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
 
-<!-- ==================================================
-     FLOWER
-================================================== -->
-
-<section
-  class="scene"
-  id="flower"
->
-
-  <div class="content">
-
-    <div class="flower-wrap">
-
-      <div class="stem"></div>
-
-      <div class="leaf"></div>
-      <div class="leaf two"></div>
-
-      <div class="flower">
-
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-
-        <div class="center"></div>
-
-      </div>
-
+    <div class="flower-head">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="flower-center"></div>
     </div>
-
-    <h2>
-      “The Lord is nigh unto them
-      that are of a broken heart…”
-    </h2>
-
-    <p
-      style="
-        margin-top:18px;
-        font-size:17px;
-      "
-    >
-      Psalm 34:18 · KJV
-    </p>
-
-    <p style="margin-top:25px;">
-      You are never alone.
-      We’ve got your back. 🤍
-    </p>
-
   </div>
 
+  <div class="scripture">
+    <p>
+      “The Lord is near to the brokenhearted
+      and saves the crushed in spirit.”
+    </p>
+    <small>Psalm 34:18 🤍</small>
+  </div>
 </section>
 
+<!-- LOVE -->
+<section id="love" class="scene">
+  <div class="love-content">
+    <div class="love-heart">♡</div>
+    <div id="loveMessage" class="love-message"></div>
+  </div>
+</section>
 
-<!-- ==================================================
-     LOVE MOMENT
-================================================== -->
+<!-- JEFF LETTER -->
+<section id="jeffLetter" class="scene letter-scene">
 
-<section
-  class="scene"
-  id="love"
->
-
-  <div class="content">
-
-    <h2 class="love-title">
-      For the next 30 seconds…
-    </h2>
-
-    <div
-      class="love-message"
-      id="loveMessage"
-    >
-
-      <div>
-
-        <span class="love-heart">
-          ♡
-        </span>
-
-        <div style="margin-top:10px;">
-          Just breathe.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="dots">
-
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-
-    </div>
-
+  <div id="jeffHeading" class="letter-heading">
+    <div class="small">A little something from me</div>
+    <h2>For you, Sades 🤍</h2>
   </div>
 
-</section>
+  <div id="jeffEnvelopeZone" class="envelope-zone">
+    <div id="jeffEnvelope" class="envelope" onclick="openJeffLetter()">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
 
-
-<!-- ==================================================
-     JEFF'S LETTER
-================================================== -->
-
-<section
-  class="scene letter-scene"
-  id="myLetter"
->
-
-  <div class="letter-stage">
-
-    <h2
-      class="letter-heading"
-      id="heading1"
-    >
-      A little letter from me 🤍
-    </h2>
-
-
-    <div
-      class="envelope"
-      id="env1"
-    >
-
-      <div class="env-back"></div>
-
-      <div class="env-flap"></div>
-
-      <div class="env-front"></div>
-
-      <div class="seal">
-        ♡
-      </div>
-
+      <div class="envelope-seal">♥</div>
+      <div class="envelope-label">Tap to open 🤍</div>
     </div>
+  </div>
 
-
-    <div
-      class="letter-card"
-      id="letter1"
-    >
+  <div id="jeffLetterZone" class="letter-zone">
+    <div class="letter-card">
 
       <div class="letter-text">
-
-        <p>
 Hey there, I know you love letters, so I wrote this one for you today.
 
 I know your heart has been feeling heavy lately, and I just wanted to remind you of something.
@@ -1428,81 +850,41 @@ We love you, Sades.
 I love you, Sades.
 
 Always. 🤍
-        </p>
-
-        <div class="signature">
-          — Jeff 🤍
-        </div>
-
       </div>
 
+      <div class="letter-signature">— Jeff 🤍</div>
     </div>
 
-
-    <div
-      class="next-area"
-      id="next1"
-    >
-
-      <button
-        class="next-btn"
-        onclick="goToBff()"
-      >
-        Read Next 🤍
-      </button>
-
-    </div>
-
+    <button id="jeffNext" class="next-btn" onclick="goToMamLetter()">
+      Read Next 🤍
+    </button>
   </div>
 
 </section>
 
+<!-- MAM / BFF LETTER -->
+<section id="mamLetter" class="scene letter-scene">
 
-<!-- ==================================================
-     MAM / BFF LETTER
-================================================== -->
+  <div id="mamHeading" class="letter-heading">
+    <div class="small">A little something from your BFF</div>
+    <h2>Sadez 🤍</h2>
+  </div>
 
-<section
-  class="scene letter-scene"
-  id="bffLetter"
->
+  <div id="mamEnvelopeZone" class="envelope-zone">
+    <div id="mamEnvelope" class="envelope" onclick="openMamLetter()">
+      <div class="envelope-back"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
 
-  <div class="letter-stage">
-
-    <h2
-      class="letter-heading"
-      id="heading2"
-    >
-      A little something from your BFF 🤍
-    </h2>
-
-
-    <div
-      class="envelope"
-      id="env2"
-    >
-
-      <div class="env-back"></div>
-
-      <div class="env-flap"></div>
-
-      <div class="env-front"></div>
-
-      <div class="seal">
-        ♡
-      </div>
-
+      <div class="envelope-seal">♥</div>
+      <div class="envelope-label">Tap to open 🤍</div>
     </div>
+  </div>
 
-
-    <div
-      class="letter-card"
-      id="letter2"
-    >
+  <div id="mamLetterZone" class="letter-zone">
+    <div class="letter-card">
 
       <div class="letter-text">
-
-        <p>
 Sadez. You are special.
 
 Never forget that.
@@ -1534,524 +916,208 @@ A God girl.
 This way, it is evil that will be influenced to work for your good and not vice versa.
 
 I love you and always will. ♥️
-        </p>
-
-        <div class="signature">
-          — Mam 🤍
-        </div>
-
       </div>
 
+      <div class="letter-signature">— Mam 🤍</div>
     </div>
 
-
-    <div
-      class="next-area"
-      id="next2"
-    >
-
-      <button
-        class="next-btn"
-        onclick="goToFinal()"
-      >
-        Finish 🤍
-      </button>
-
-    </div>
-
+    <button id="mamNext" class="next-btn" onclick="goToFinal()">
+      Finish 🤍
+    </button>
   </div>
 
 </section>
 
+<!-- FINAL -->
+<section id="final" class="scene">
+  <div class="final-box">
+    <div class="final-heart">🤍</div>
 
-<!-- ==================================================
-     FINAL
-================================================== -->
-
-<section
-  class="scene final"
-  id="final"
->
-
-  <div class="content">
-
-    <div class="final-heart">
-      🤍
-    </div>
-
-    <h2>
-      You are never alone.
-    </h2>
+    <h1>You are never alone.</h1>
 
     <p>
-
+      Whatever season you're in, you don't have to carry it by yourself.
+      <br><br>
       We've got your back.
-
-      <br><br>
-
-      So breathe.<br>
-      Take your time.<br>
-      And keep being you.
-
-      <br><br>
-
-      We love you, Sades.
-
-      <br>
-
-      Always. 🤍
-
     </p>
 
+    <div style="margin-top:25px; color:#b56a89;">
+      Always. 🤍
+    </div>
   </div>
-
 </section>
-
 
 <script>
 
+const scenes = document.querySelectorAll('.scene');
 
-/* ==================================================
-   SCENE CONTROL
-================================================== */
-
-const scenes = {
-
-  intro:
-    document.getElementById("intro"),
-
-  bear:
-    document.getElementById("bear"),
-
-  flower:
-    document.getElementById("flower"),
-
-  love:
-    document.getElementById("love"),
-
-  myLetter:
-    document.getElementById("myLetter"),
-
-  bff:
-    document.getElementById("bffLetter"),
-
-  final:
-    document.getElementById("final")
-
-};
-
-
-let currentScene = "intro";
-
-
-function showScene(name){
-
-  Object.values(scenes).forEach(
-    scene => {
-
-      scene.classList.remove(
-        "active"
-      );
-
-    }
-  );
-
-
-  scenes[name].classList.add(
-    "active"
-  );
-
-
-  currentScene = name;
-
+function showScene(id) {
+  scenes.forEach(scene => scene.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 
+/* =========================
+   START
+========================= */
 
-/* ==================================================
-   START EXPERIENCE
-================================================== */
+function startExperience() {
+  showScene('bear');
 
-function startExperience(){
+  /* BEAR NOW ONLY 4 SECONDS */
+  setTimeout(() => {
+    showScene('flower');
 
-  showScene("bear");
+    setTimeout(() => {
+      startLove();
 
+    }, 6000);
 
-  /*
-    The experience starts ONLY
-    after the user presses the
-    intro button.
-  */
-
-  setTimeout(()=>{
-
-    if(
-      currentScene === "bear"
-    ){
-
-      showScene("flower");
-
-    }
-
-  },6500);
-
-
-  setTimeout(()=>{
-
-    if(
-      currentScene === "flower"
-    ){
-
-      showScene("love");
-
-      startLoveSequence();
-
-    }
-
-  },12500);
-
+  }, 4000);
 }
 
+/* =========================
+   LOVE
+========================= */
 
-/* ==================================================
-   LOVE SEQUENCE
-================================================== */
-
-const messages = [
-
-  "Just breathe. 🤍",
-
-  "You don't have to figure everything out today.",
-
-  "Take your time.",
-
-  "You are allowed to rest.",
-
-  "We're here. 🤍"
-
+const loveMessages = [
+  "You are loved. 🤍",
+  "More than you probably realise.",
+  "You don't have to carry everything alone.",
+  "There are people who genuinely care about you.",
+  "People who are rooting for you.",
+  "People who want to see you okay.",
+  "People who are here.",
+  "And we're not going anywhere. 🤍"
 ];
-
-
-const messageBox =
-  document.getElementById(
-    "loveMessage"
-  );
-
-
-const dots =
-  document.querySelectorAll(
-    ".dot"
-  );
-
 
 let loveIndex = 0;
 
+function startLove() {
 
-function startLoveSequence(){
+  showScene('love');
 
-  loveIndex = 0;
+  const message = document.getElementById('loveMessage');
 
+  function nextLoveMessage() {
 
-  const loveTimer =
-    setInterval(()=>{
+    message.style.opacity = 0;
 
-      if(
-        currentScene !== "love"
-      ){
+    setTimeout(() => {
 
-        clearInterval(
-          loveTimer
-        );
-
-        return;
-
-      }
-
+      message.textContent = loveMessages[loveIndex];
+      message.style.opacity = 1;
 
       loveIndex++;
 
-
-      if(
-        loveIndex >=
-        messages.length
-      ){
-
-        clearInterval(
-          loveTimer
-        );
-
-        return;
-
+      if (loveIndex < loveMessages.length) {
+        setTimeout(nextLoveMessage, 3700);
+      } else {
+        setTimeout(() => {
+          showScene('jeffLetter');
+        }, 4500);
       }
 
+    }, 400);
+  }
 
-      messageBox.innerHTML = `
-
-        <div>
-
-          <span class="love-heart">
-            ♡
-          </span>
-
-          <div style="margin-top:10px;">
-            ${messages[loveIndex]}
-          </div>
-
-        </div>
-
-      `;
-
-
-      dots.forEach(
-        (dot,i)=>{
-
-          dot.classList.toggle(
-            "active",
-            i === loveIndex
-          );
-
-        }
-      );
-
-
-    },5500);
-
-
-  /*
-    Love section lasts 30 seconds.
-  */
-
-  setTimeout(()=>{
-
-    if(
-      currentScene === "love"
-    ){
-
-      showScene("myLetter");
-
-    }
-
-  },30000);
-
+  nextLoveMessage();
 }
 
+/* =========================
+   JEFF LETTER
+========================= */
 
-/* ==================================================
-   JEFF'S ENVELOPE
-================================================== */
+function openJeffLetter() {
 
-const env1 =
-  document.getElementById(
-    "env1"
-  );
+  const envelope = document.getElementById('jeffEnvelope');
+  const envelopeZone = document.getElementById('jeffEnvelopeZone');
+  const letterZone = document.getElementById('jeffLetterZone');
+  const heading = document.getElementById('jeffHeading');
+  const next = document.getElementById('jeffNext');
 
-const letter1 =
-  document.getElementById(
-    "letter1"
-  );
+  envelope.onclick = null;
+  envelope.classList.add('open');
 
-const next1 =
-  document.getElementById(
-    "next1"
-  );
+  /* Let the flap open first */
+  setTimeout(() => {
 
-const heading1 =
-  document.getElementById(
-    "heading1"
-  );
+    /* Show letter */
+    letterZone.classList.add('show');
 
+    /* Then completely remove envelope */
+    setTimeout(() => {
+      envelopeZone.classList.add('gone');
+      heading.classList.add('hide');
+    }, 500);
 
-env1.addEventListener(
-  "click",
-  ()=>{
+    /* Show next button */
+    setTimeout(() => {
+      next.classList.add('show');
+    }, 1100);
 
-
-    if(
-      env1.classList.contains(
-        "open"
-      )
-    ){
-
-      return;
-
-    }
-
-
-    /*
-      Open envelope.
-    */
-
-    env1.classList.add(
-      "open"
-    );
-
-
-    /*
-      Let the flap open
-      before revealing the
-      letter.
-    */
-
-    setTimeout(()=>{
-
-      letter1.classList.add(
-        "show"
-      );
-
-    },700);
-
-
-    /*
-      Once the letter has
-      started rising, remove
-      the envelope completely.
-    */
-
-    setTimeout(()=>{
-
-      env1.classList.add(
-        "disappear"
-      );
-
-      heading1.classList.add(
-        "hide"
-      );
-
-    },1500);
-
-
-    /*
-      Show the next button
-      after everything settles.
-    */
-
-    setTimeout(()=>{
-
-      next1.classList.add(
-        "show"
-      );
-
-    },2600);
-
-  }
-);
-
-
-/* ==================================================
-   NEXT → MAM
-================================================== */
-
-function goToBff(){
-
-  showScene("bff");
-
+  }, 700);
 }
 
+/* =========================
+   GO TO MAM
+========================= */
 
-/* ==================================================
-   MAM / BFF ENVELOPE
-================================================== */
+function goToMamLetter() {
 
-const env2 =
-  document.getElementById(
-    "env2"
-  );
+  showScene('mamLetter');
 
-const letter2 =
-  document.getElementById(
-    "letter2"
-  );
+  /* Reset state in case browser cached it */
+  document.getElementById('mamEnvelopeZone').classList.remove('gone');
+  document.getElementById('mamLetterZone').classList.remove('show');
+  document.getElementById('mamHeading').classList.remove('hide');
+  document.getElementById('mamNext').classList.remove('show');
 
-const next2 =
-  document.getElementById(
-    "next2"
-  );
+  const envelope = document.getElementById('mamEnvelope');
+  envelope.classList.remove('open');
 
-const heading2 =
-  document.getElementById(
-    "heading2"
-  );
+  envelope.onclick = openMamLetter;
+}
 
+/* =========================
+   MAM LETTER
+========================= */
 
-env2.addEventListener(
-  "click",
-  ()=>{
+function openMamLetter() {
 
+  const envelope = document.getElementById('mamEnvelope');
+  const envelopeZone = document.getElementById('mamEnvelopeZone');
+  const letterZone = document.getElementById('mamLetterZone');
+  const heading = document.getElementById('mamHeading');
+  const next = document.getElementById('mamNext');
 
-    if(
-      env2.classList.contains(
-        "open"
-      )
-    ){
+  envelope.onclick = null;
+  envelope.classList.add('open');
 
-      return;
+  setTimeout(() => {
 
-    }
+    /* Show letter */
+    letterZone.classList.add('show');
 
+    /* Completely remove envelope */
+    setTimeout(() => {
+      envelopeZone.classList.add('gone');
+      heading.classList.add('hide');
+    }, 500);
 
-    /*
-      Open Mam's envelope.
-    */
+    /* Show finish button */
+    setTimeout(() => {
+      next.classList.add('show');
+    }, 1100);
 
-    env2.classList.add(
-      "open"
-    );
+  }, 700);
+}
 
-
-    /*
-      Reveal Mam's letter.
-    */
-
-    setTimeout(()=>{
-
-      letter2.classList.add(
-        "show"
-      );
-
-    },700);
-
-
-    /*
-      Remove envelope after
-      the letter is established.
-    */
-
-    setTimeout(()=>{
-
-      env2.classList.add(
-        "disappear"
-      );
-
-      heading2.classList.add(
-        "hide"
-      );
-
-    },1500);
-
-
-    /*
-      Show Finish button.
-    */
-
-    setTimeout(()=>{
-
-      next2.classList.add(
-        "show"
-      );
-
-    },2600);
-
-  }
-);
-
-
-/* ==================================================
+/* =========================
    FINAL
-================================================== */
+========================= */
 
-function goToFinal(){
-
-  showScene("final");
-
+function goToFinal() {
+  showScene('final');
 }
 
 </script>
