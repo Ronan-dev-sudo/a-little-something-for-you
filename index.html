@@ -153,17 +153,6 @@ p{
 .eye.left{left:45px}
 .eye.right{right:45px}
 
-.nose{
-  width:20px;
-  height:15px;
-  background:#51333b;
-  border-radius:50%;
-  position:absolute;
-  left:50%;
-  top:78px;
-  transform:translateX(-50%);
-}
-
 .muzzle{
   width:60px;
   height:45px;
@@ -175,7 +164,15 @@ p{
   transform:translateX(-50%);
 }
 
-.bear .nose{
+.nose{
+  width:20px;
+  height:15px;
+  background:#51333b;
+  border-radius:50%;
+  position:absolute;
+  left:50%;
+  top:78px;
+  transform:translateX(-50%);
   z-index:2;
 }
 
@@ -369,7 +366,7 @@ p{
   opacity:1;
 }
 
-/* ENVELOPE */
+/* ENVELOPES */
 
 .letter-area{
   width:min(650px,100%);
@@ -448,18 +445,18 @@ p{
   transform:translateY(20px);
   transition:max-height 2s ease,opacity 1s ease,transform 1s ease;
   text-align:left;
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.94);
   border-radius:20px;
   padding:0 30px;
   box-shadow:0 20px 60px rgba(120,40,70,.1);
 }
 
 .letter.show{
-  max-height:70vh;
+  max-height:55vh;
   overflow-y:auto;
   opacity:1;
   transform:translateY(0);
-  padding:35px 30px;
+  padding:35px 30px 25px;
 }
 
 .letter p{
@@ -475,6 +472,47 @@ p{
   text-align:right;
   font-family:"Cormorant Garamond",serif;
   font-size:25px;
+}
+
+/* CONTINUE BUTTON */
+
+.continue-wrap{
+  text-align:center;
+  margin-top:22px;
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.continue-wrap.show{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.continue-btn{
+  border:none;
+  background:#d95f8a;
+  color:white;
+  padding:14px 30px;
+  border-radius:999px;
+  font-family:"DM Sans",sans-serif;
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.2px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(217,95,138,.25);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.continue-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(217,95,138,.32);
+}
+
+.continue-btn:active{
+  transform:translateY(0);
 }
 
 /* FINAL */
@@ -498,6 +536,7 @@ p{
 /* MOBILE */
 
 @media(max-width:600px){
+
   .scene{
     padding:20px;
   }
@@ -513,8 +552,8 @@ p{
   }
 
   .letter.show{
-    max-height:65vh;
-    padding:25px 20px;
+    max-height:58vh;
+    padding:25px 20px 20px;
   }
 
   .letter p{
@@ -524,21 +563,28 @@ p{
   .envelope{
     height:230px;
   }
+
+  .continue-wrap{
+    margin-top:15px;
+  }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING HEARTS -->
 <div class="heart h1">♡</div>
 <div class="heart h2">♡</div>
 <div class="heart h3">♡</div>
 <div class="heart h4">♡</div>
 <div class="heart h5">♡</div>
 
+
 <!-- BEAR -->
+
 <section class="scene active" id="bear">
+
   <div class="content">
 
     <div class="bear-wrap">
@@ -567,16 +613,20 @@ p{
     </div>
 
     <h2>Just a little something for you…</h2>
+
     <p style="margin-top:15px;">
       Stay here for a moment. 🤍
     </p>
 
   </div>
+
 </section>
 
 
 <!-- FLOWER -->
+
 <section class="scene" id="flower">
+
   <div class="content">
 
     <div class="flower-wrap">
@@ -608,48 +658,70 @@ p{
     </p>
 
   </div>
+
 </section>
 
 
-<!-- 30 SECOND LOVE MOMENT -->
+<!-- LOVE -->
+
 <section class="scene" id="love">
+
   <div class="content">
 
-    <h2 class="love-title">For the next 30 seconds…</h2>
+    <h2 class="love-title">
+      For the next 30 seconds…
+    </h2>
 
     <div class="love-message" id="loveMessage">
+
       <div>
+
         <span class="love-heart">♡</span>
-        <div style="margin-top:10px;">Just breathe.</div>
+
+        <div style="margin-top:10px;">
+          Just breathe.
+        </div>
+
       </div>
+
     </div>
 
     <div class="dots">
+
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
       <span class="dot"></span>
+
     </div>
 
   </div>
+
 </section>
 
 
-<!-- YOUR LETTER -->
+<!-- JEFF'S LETTER -->
+
 <section class="scene" id="myLetter">
+
   <div class="content letter-area">
 
     <h2>A little letter from me 🤍</h2>
 
     <div class="envelope" id="env1">
+
       <div class="env-back"></div>
       <div class="env-flap"></div>
       <div class="env-front"></div>
+
       <div class="seal">♡</div>
+
     </div>
 
+
     <div class="letter" id="letter1">
+
       <p>
 Hey there, I know you love letters, so I wrote this one for you today.
 
@@ -681,7 +753,7 @@ And that's why I can't put you in a hierarchy of ranks.
 
 Because how do you rank family? 😂
 
-I really appreciate you so, so much. I wish you knew how much of a blessing you've been to me.
+I really appreciate you, so, so much. I wish you knew how much of a blessing you've been to me.
 
 We're stuck for life. 😂🤍
 
@@ -697,24 +769,41 @@ Always. 🤍
       <div class="signature">
         — Jeff 🤍
       </div>
+
+    </div>
+
+
+    <div class="continue-wrap" id="continue1">
+
+      <button class="continue-btn" onclick="goToBff()">
+        Continue 🤍
+      </button>
+
     </div>
 
   </div>
+
 </section>
 
 
 <!-- MAM / BFF LETTER -->
+
 <section class="scene" id="bffLetter">
+
   <div class="content letter-area">
 
     <h2>A little something from your BFF 🤍</h2>
 
     <div class="envelope" id="env2">
+
       <div class="env-back"></div>
       <div class="env-flap"></div>
       <div class="env-front"></div>
+
       <div class="seal">♡</div>
+
     </div>
+
 
     <div class="letter" id="letter2">
 
@@ -758,39 +847,64 @@ I love you and always will. ♥️
 
     </div>
 
+
+    <div class="continue-wrap" id="continue2">
+
+      <button class="continue-btn" onclick="goToFinal()">
+        Continue 🤍
+      </button>
+
+    </div>
+
   </div>
+
 </section>
 
 
 <!-- FINAL -->
+
 <section class="scene final" id="final">
+
   <div class="content">
 
-    <div class="final-heart">🤍</div>
+    <div class="final-heart">
+      🤍
+    </div>
 
-    <h2>You are never alone.</h2>
+    <h2>
+      You are never alone.
+    </h2>
 
     <p>
+
       We've got your back.
+
       <br><br>
+
       So breathe.<br>
       Take your time.<br>
       And keep being you.
+
       <br><br>
+
       We love you, Sades.
+
       <br>
+
       Always. 🤍
+
     </p>
 
   </div>
+
 </section>
 
 
 <script>
 
-/* ---------------------------
+/* -------------------------
    SCENE CONTROL
----------------------------- */
+-------------------------- */
 
 const scenes = [
   document.getElementById("bear"),
@@ -810,61 +924,53 @@ function showScene(index){
   });
 
   current = index;
+
 }
 
 
-/* ---------------------------
+/* -------------------------
    BEAR → FLOWER
----------------------------- */
+-------------------------- */
 
 setTimeout(()=>{
   showScene(1);
 },6500);
 
 
-/* ---------------------------
+/* -------------------------
    FLOWER → LOVE
----------------------------- */
+-------------------------- */
 
 setTimeout(()=>{
   showScene(2);
 },12500);
 
 
-/* ---------------------------
+/* -------------------------
    LOVE SEQUENCE
----------------------------- */
+-------------------------- */
 
 const messages = [
+
   "Just breathe. 🤍",
+
   "You don't have to figure everything out today.",
+
   "Take your time.",
+
   "You are allowed to rest.",
+
   "We're here. 🤍"
+
 ];
 
-const messageBox = document.getElementById("loveMessage");
-const dots = document.querySelectorAll(".dot");
+const messageBox =
+  document.getElementById("loveMessage");
+
+const dots =
+  document.querySelectorAll(".dot");
 
 let loveIndex = 0;
-
-function updateLove(){
-
-  messageBox.innerHTML = `
-    <div>
-      <span class="love-heart">♡</span>
-      <div style="margin-top:10px;">
-        ${messages[loveIndex]}
-      </div>
-    </div>
-  `;
-
-  dots.forEach((dot,i)=>{
-    dot.classList.toggle("active",i === loveIndex);
-  });
-
-  loveIndex++;
-}
 
 const loveTimer = setInterval(()=>{
 
@@ -873,12 +979,40 @@ const loveTimer = setInterval(()=>{
     return;
   }
 
-  updateLove();
+  loveIndex++;
+
+  if(loveIndex >= messages.length){
+    clearInterval(loveTimer);
+    return;
+  }
+
+  messageBox.innerHTML = `
+    <div>
+
+      <span class="love-heart">
+        ♡
+      </span>
+
+      <div style="margin-top:10px;">
+        ${messages[loveIndex]}
+      </div>
+
+    </div>
+  `;
+
+  dots.forEach((dot,i)=>{
+    dot.classList.toggle(
+      "active",
+      i === loveIndex
+    );
+  });
 
 },5500);
 
 
-/* exactly 30 seconds after LOVE begins */
+/* -------------------------
+   LOVE → LETTER
+-------------------------- */
 
 setTimeout(()=>{
 
@@ -889,60 +1023,112 @@ setTimeout(()=>{
 },30000);
 
 
-/* ---------------------------
-   YOUR ENVELOPE
----------------------------- */
+/* -------------------------
+   JEFF'S LETTER
+-------------------------- */
 
-const env1 = document.getElementById("env1");
-const letter1 = document.getElementById("letter1");
+const env1 =
+  document.getElementById("env1");
+
+const letter1 =
+  document.getElementById("letter1");
+
+const continue1 =
+  document.getElementById("continue1");
+
 
 env1.addEventListener("click",()=>{
+
+  if(env1.classList.contains("open")){
+    return;
+  }
 
   env1.classList.add("open");
 
   setTimeout(()=>{
+
     letter1.classList.add("show");
+
   },800);
 
   setTimeout(()=>{
-    showScene(4);
-  },30000);
+
+    continue1.classList.add("show");
+
+  },2200);
 
 });
 
 
-/* ---------------------------
-   BFF / MAM ENVELOPE
----------------------------- */
+/* -------------------------
+   CONTINUE TO BFF
+-------------------------- */
 
-const env2 = document.getElementById("env2");
-const letter2 = document.getElementById("letter2");
+function goToBff(){
+
+  showScene(4);
+
+}
+
+
+/* -------------------------
+   MAM / BFF LETTER
+-------------------------- */
+
+const env2 =
+  document.getElementById("env2");
+
+const letter2 =
+  document.getElementById("letter2");
+
+const continue2 =
+  document.getElementById("continue2");
+
 
 env2.addEventListener("click",()=>{
+
+  if(env2.classList.contains("open")){
+    return;
+  }
 
   env2.classList.add("open");
 
   setTimeout(()=>{
+
     letter2.classList.add("show");
+
   },800);
 
   setTimeout(()=>{
-    showScene(5);
-  },25000);
+
+    continue2.classList.add("show");
+
+  },2200);
 
 });
 
 
-/* ---------------------------
+/* -------------------------
+   CONTINUE TO FINAL
+-------------------------- */
+
+function goToFinal(){
+
+  showScene(5);
+
+}
+
+
+/* -------------------------
    SAFETY FALLBACK
-   Makes sure the site never
-   gets stuck on the bear.
----------------------------- */
+-------------------------- */
 
 setTimeout(()=>{
+
   if(current === 0){
     showScene(1);
   }
+
 },8000);
 
 </script>
