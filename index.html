@@ -6,7 +6,7 @@
 
 <title>A Little Something For You 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,8 +21,8 @@ body{
   height:100vh;
   overflow:hidden;
   background:#fff8fb;
-  font-family:"DM Sans",sans-serif;
   color:#493941;
+  font-family:"DM Sans",sans-serif;
 }
 
 /* =========================
@@ -34,10 +34,10 @@ body{
   inset:0;
   overflow:hidden;
   background:
-    radial-gradient(circle at 20% 20%,rgba(255,184,213,.5),transparent 30%),
-    radial-gradient(circle at 80% 20%,rgba(255,218,232,.7),transparent 34%),
-    radial-gradient(circle at 50% 100%,rgba(255,196,220,.5),transparent 40%),
-    linear-gradient(135deg,#fffafd,#fff3f8,#ffffff);
+    radial-gradient(circle at 18% 18%,rgba(255,188,215,.5),transparent 29%),
+    radial-gradient(circle at 82% 25%,rgba(255,220,233,.7),transparent 34%),
+    radial-gradient(circle at 48% 100%,rgba(255,200,222,.48),transparent 40%),
+    linear-gradient(135deg,#fffafd,#fff4f8,#ffffff);
 }
 
 .glow{
@@ -45,361 +45,346 @@ body{
   width:500px;
   height:500px;
   border-radius:50%;
-  background:rgba(255,186,215,.2);
+  background:rgba(255,190,216,.2);
   filter:blur(90px);
-  animation:glowMove 12s ease-in-out infinite alternate;
+  animation:moveGlow 12s ease-in-out infinite alternate;
 }
 
 .glow.one{
   top:-220px;
-  left:-150px;
+  left:-160px;
 }
 
 .glow.two{
-  right:-200px;
+  right:-220px;
   bottom:-240px;
   animation-delay:3s;
 }
 
-@keyframes glowMove{
-  from{
-    transform:translate(0,0) scale(1);
-  }
-  to{
-    transform:translate(70px,40px) scale(1.15);
-  }
+@keyframes moveGlow{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(70px,40px) scale(1.15)}
 }
 
 /* =========================
-   SOFT ORBS
+   FLOATING DETAILS
 ========================= */
 
-.orb{
+.sparkle{
   position:absolute;
-  border-radius:50%;
-  border:1px solid rgba(224,145,177,.12);
-  animation:orbFloat 9s ease-in-out infinite;
+  color:#e6a2bd;
+  opacity:.3;
+  font-size:18px;
+  animation:sparkleFloat 7s ease-in-out infinite;
 }
 
-.orb.one{
-  width:220px;
-  height:220px;
-  left:-80px;
-  top:25%;
-}
+.s1{left:12%;top:20%}
+.s2{right:13%;top:27%;animation-delay:2s}
+.s3{left:20%;bottom:18%;animation-delay:4s}
+.s4{right:20%;bottom:20%;animation-delay:1s}
 
-.orb.two{
-  width:150px;
-  height:150px;
-  right:5%;
-  top:12%;
-  animation-delay:2s;
-}
+@keyframes sparkleFloat{
 
-.orb.three{
-  width:280px;
-  height:280px;
-  right:-130px;
-  bottom:-100px;
-  animation-delay:4s;
-}
-
-@keyframes orbFloat{
   0%,100%{
-    transform:translateY(0);
+    transform:translateY(0) scale(1);
+    opacity:.2;
   }
+
   50%{
-    transform:translateY(-18px);
-  }
-}
-
-/* =========================
-   HEARTS
-========================= */
-
-.heart{
-  position:absolute;
-  color:#e7a0bd;
-  font-size:22px;
-  opacity:0;
-  animation:heartRise linear infinite;
-}
-
-.heart:nth-child(1){
-  left:8%;
-  bottom:-30px;
-  animation-duration:11s;
-}
-
-.heart:nth-child(2){
-  left:19%;
-  bottom:-30px;
-  animation-duration:14s;
-  animation-delay:3s;
-}
-
-.heart:nth-child(3){
-  left:34%;
-  bottom:-30px;
-  animation-duration:12s;
-  animation-delay:5s;
-}
-
-.heart:nth-child(4){
-  left:54%;
-  bottom:-30px;
-  animation-duration:15s;
-  animation-delay:1s;
-}
-
-.heart:nth-child(5){
-  left:71%;
-  bottom:-30px;
-  animation-duration:13s;
-  animation-delay:4s;
-}
-
-.heart:nth-child(6){
-  left:88%;
-  bottom:-30px;
-  animation-duration:12s;
-  animation-delay:2s;
-}
-
-@keyframes heartRise{
-
-  0%{
-    transform:translateY(0) rotate(-10deg) scale(.8);
-    opacity:0;
-  }
-
-  15%{
+    transform:translateY(-15px) scale(1.12);
     opacity:.45;
   }
 
-  80%{
-    opacity:.35;
-  }
-
-  100%{
-    transform:translateY(-115vh) rotate(18deg) scale(1.15);
-    opacity:0;
-  }
-
 }
 
 /* =========================
-   MAIN
+   SCENE
 ========================= */
 
 .scene{
   position:relative;
-  z-index:10;
+  z-index:5;
   width:100%;
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:25px;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+  position:absolute;
   text-align:center;
-  padding:30px;
+  animation:introOut 2s ease forwards;
+  animation-delay:3.5s;
 }
 
-.content{
-  width:min(700px,100%);
-  animation:enter 2s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-.eyebrow{
+.intro .eyebrow{
   font-size:11px;
   letter-spacing:4px;
+  text-transform:uppercase;
+  color:#b47b91;
+  margin-bottom:20px;
+}
+
+.intro h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(42px,6vw,64px);
+  font-weight:400;
+  color:#493941;
+}
+
+@keyframes introOut{
+
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  to{
+    opacity:0;
+    transform:translateY(-20px);
+  }
+
+}
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelopeArea{
+  position:absolute;
+  width:360px;
+  height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transform:translateY(25px) scale(.96);
+  animation:envelopeIn 1.8s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay:4.3s;
+}
+
+@keyframes envelopeIn{
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+
+}
+
+.envelope{
+  position:relative;
+  width:320px;
+  height:210px;
+  cursor:pointer;
+  filter:drop-shadow(0 25px 35px rgba(170,105,130,.18));
+}
+
+.back{
+  position:absolute;
+  inset:0;
+  background:#f4d8e2;
+  border-radius:7px;
+}
+
+.paper{
+  position:absolute;
+  width:270px;
+  height:175px;
+  background:#fffdfc;
+  left:25px;
+  top:13px;
+  border-radius:4px;
+  z-index:2;
+  box-shadow:0 8px 20px rgba(120,80,95,.08);
+  transition:1.2s ease;
+}
+
+.paperLines{
+  position:absolute;
+  left:35px;
+  right:35px;
+  top:48px;
+}
+
+.paperLines span{
+  display:block;
+  height:1px;
+  background:#ead9df;
+  margin:15px 0;
+}
+
+.front{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:0;
+  border-left:160px solid transparent;
+  border-right:160px solid transparent;
+  border-bottom:112px solid #edc7d4;
+  z-index:4;
+}
+
+.flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:0;
+  height:0;
+  border-left:160px solid transparent;
+  border-right:160px solid transparent;
+  border-top:112px solid #e7b9cb;
+  transform-origin:top center;
+  transition:1.2s cubic-bezier(.2,.8,.2,1);
+  z-index:5;
+}
+
+.seal{
+  position:absolute;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#d889aa;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  left:136px;
+  top:91px;
+  z-index:6;
+  box-shadow:0 8px 18px rgba(190,110,145,.25);
+  transition:.8s ease;
+}
+
+/* OPEN */
+
+.envelope.open .flap{
+  transform:rotateX(180deg);
+  z-index:1;
+}
+
+.envelope.open .seal{
+  opacity:0;
+  transform:scale(.5);
+}
+
+.envelope.open .paper{
+  transform:translateY(-105px);
+}
+
+/* =========================
+   TAP LABEL
+========================= */
+
+.tap{
+  position:absolute;
+  bottom:-30px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#b77f94;
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+
+  0%,100%{opacity:.45}
+  50%{opacity:1}
+
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter{
+  position:absolute;
+  width:min(650px,90vw);
+  max-height:78vh;
+  overflow:auto;
+  background:rgba(255,253,252,.94);
+  border:1px solid rgba(218,174,190,.35);
+  border-radius:10px;
+  padding:55px 60px;
+  box-shadow:
+    0 30px 80px rgba(140,90,110,.15),
+    0 5px 20px rgba(140,90,110,.08);
+  opacity:0;
+  transform:translateY(40px) scale(.96);
+  pointer-events:none;
+  transition:1.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.letter.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+
+.letter .top{
+  font-size:10px;
+  letter-spacing:3px;
   text-transform:uppercase;
   color:#b47b91;
   margin-bottom:25px;
 }
 
-h1{
+.letter h2{
   font-family:"Playfair Display",serif;
-  font-size:clamp(45px,7vw,75px);
+  font-size:38px;
   font-weight:400;
-  line-height:1.05;
-  margin-bottom:22px;
-  color:#44363d;
-}
-
-.sub{
-  font-size:17px;
-  line-height:1.8;
-  color:#705c65;
-  max-width:500px;
-  margin:auto;
-}
-
-/* =========================
-   MESSAGE AREA
-========================= */
-
-.message{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:min(700px,90%);
-  opacity:0;
-  pointer-events:none;
-}
-
-.message.active{
-  animation:messageIn 5s ease forwards;
-}
-
-.message .tiny{
-  font-size:11px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-  color:#b47b91;
-  margin-bottom:22px;
-}
-
-.message .main{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(36px,6vw,62px);
-  line-height:1.15;
+  margin-bottom:25px;
   color:#493941;
 }
 
-.message .small{
-  margin-top:20px;
+.letterBody{
   font-size:16px;
-  color:#765f69;
-  line-height:1.7;
+  line-height:2;
+  color:#67545d;
 }
 
-@keyframes messageIn{
-
-  0%{
-    opacity:0;
-    transform:translate(-50%,-46%);
-  }
-
-  18%{
-    opacity:1;
-    transform:translate(-50%,-50%);
-  }
-
-  78%{
-    opacity:1;
-    transform:translate(-50%,-50%);
-  }
-
-  100%{
-    opacity:0;
-    transform:translate(-50%,-54%);
-  }
-
-}
-
-/* =========================
-   CENTER HEART
-========================= */
-
-.centerHeart{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  font-size:72px;
-  opacity:0;
-  animation:centerHeart 7s ease-in-out infinite;
-}
-
-@keyframes centerHeart{
-
-  0%,100%{
-    opacity:0;
-    transform:translate(-50%,-50%) scale(.7);
-  }
-
-  15%,70%{
-    opacity:.18;
-    transform:translate(-50%,-50%) scale(1);
-  }
-
-  85%{
-    opacity:0;
-    transform:translate(-50%,-50%) scale(1.15);
-  }
-
-}
-
-/* =========================
-   FINAL
-========================= */
-
-.final{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:90%;
-  opacity:0;
-  pointer-events:none;
-  text-align:center;
-}
-
-.final.show{
-  animation:finalIn 2s ease forwards;
-}
-
-.final h2{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(38px,6vw,62px);
-  font-weight:400;
-  color:#493941;
+.letterBody p{
   margin-bottom:20px;
 }
 
-.final p{
-  font-size:16px;
-  color:#765f69;
-  line-height:1.8;
+.signature{
+  margin-top:30px;
+  font-family:"Playfair Display",serif;
+  font-size:24px;
+  color:#9e637c;
 }
 
-@keyframes finalIn{
-
-  from{
-    opacity:0;
-    transform:translate(-50%,-44%);
-  }
-
-  to{
-    opacity:1;
-    transform:translate(-50%,-50%);
-  }
-
+.next{
+  margin-top:35px;
+  font-size:10px;
+  letter-spacing:3px;
+  color:#bd8298;
+  text-transform:uppercase;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 .bottom{
   position:absolute;
-  bottom:25px;
+  bottom:22px;
   left:0;
   right:0;
+  text-align:center;
   font-size:10px;
   letter-spacing:3px;
   color:#c49baa;
-}
-
-@keyframes enter{
-
-  from{
-    opacity:0;
-    transform:scale(.97);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-
 }
 
 </style>
@@ -412,94 +397,105 @@ h1{
   <div class="glow one"></div>
   <div class="glow two"></div>
 
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <div class="orb three"></div>
-
-  <div class="heart">♡</div>
-  <div class="heart">♡</div>
-  <div class="heart">♡</div>
-  <div class="heart">♡</div>
-  <div class="heart">♡</div>
-  <div class="heart">♡</div>
+  <div class="sparkle s1">✦</div>
+  <div class="sparkle s2">✧</div>
+  <div class="sparkle s3">✦</div>
+  <div class="sparkle s4">✧</div>
 
 </div>
 
 <section class="scene">
 
-  <div class="content" id="intro">
+  <div class="intro">
 
     <div class="eyebrow">
-      Just a little something
+      Someone wanted to tell you something
     </div>
 
-    <h1>For you. 🤍</h1>
+    <h1>A little letter. 💌</h1>
 
-    <div class="sub">
-      Sometimes you don't need many words.
-      Sometimes you just need to know that people are there.
+  </div>
+
+
+  <div class="envelopeArea" id="envelopeArea">
+
+    <div class="envelope" id="envelope" onclick="openLetter()">
+
+      <div class="back"></div>
+
+      <div class="paper">
+
+        <div class="paperLines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class="flap"></div>
+
+      <div class="front"></div>
+
+      <div class="seal">
+        ♡
+      </div>
+
+    </div>
+
+    <div class="tap">
+      OPEN THE LETTER
     </div>
 
   </div>
 
-  <div class="centerHeart">
-    ♡
-  </div>
 
-  <div class="message" id="message1">
+  <article class="letter" id="letter">
 
-    <div class="tiny">
-      A little reminder
+    <div class="top">
+      A little message from Jeff
     </div>
 
-    <div class="main">
-      You don't have to carry everything alone.
+    <h2>Dear you,</h2>
+
+    <div class="letterBody">
+
+      <p>
+        I know things have been a little hard recently,
+        and I just wanted to remind you that you don't
+        have to go through everything by yourself.
+      </p>
+
+      <p>
+        There are people around you who care about you,
+        who are praying for you, and who genuinely want
+        to see you okay.
+      </p>
+
+      <p>
+        So take your time. Breathe. Rest when you need to.
+        And don't feel like you have to have everything
+        figured out right now.
+      </p>
+
+      <p>
+        Whatever this season looks like, just remember
+        that you have people standing with you.
+      </p>
+
+      <div class="signature">
+        With love,<br>
+        Jeff 🤍
+      </div>
+
     </div>
 
-  </div>
-
-  <div class="message" id="message2">
-
-    <div class="tiny">
-      Always remember
+    <div class="next">
+      There is one more letter waiting...
     </div>
 
-    <div class="main">
-      We're here.
-    </div>
+  </article>
 
-    <div class="small">
-      Through the good days, the difficult ones,
-      and everything in between.
-    </div>
-
-  </div>
-
-  <div class="message" id="message3">
-
-    <div class="tiny">
-      From all of us
-    </div>
-
-    <div class="main">
-      You are never alone.
-    </div>
-
-    <div class="small">
-      We've got your back. 🤍
-    </div>
-
-  </div>
-
-  <div class="final" id="final">
-
-    <h2>A little love before the letter. 💗</h2>
-
-    <p>
-      Stay here for a moment...
-    </p>
-
-  </div>
 
   <div class="bottom">
     WITH LOVE · ALWAYS
@@ -507,42 +503,37 @@ h1{
 
 </section>
 
+
 <script>
 
-setTimeout(function(){
+function openLetter(){
 
-  document.getElementById("intro").style.transition="1.5s ease";
-  document.getElementById("intro").style.opacity="0";
+  const envelope =
+    document.getElementById("envelope");
 
-},4000);
+  const envelopeArea =
+    document.getElementById("envelopeArea");
 
+  const letter =
+    document.getElementById("letter");
 
-setTimeout(function(){
+  envelope.classList.add("open");
 
-  document.getElementById("message1").classList.add("active");
+  setTimeout(function(){
 
-},5000);
+    envelopeArea.style.opacity="0";
+    envelopeArea.style.transform=
+      "translateY(-30px) scale(.95)";
 
+  },900);
 
-setTimeout(function(){
+  setTimeout(function(){
 
-  document.getElementById("message2").classList.add("active");
+    letter.classList.add("show");
 
-},10000);
+  },1300);
 
-
-setTimeout(function(){
-
-  document.getElementById("message3").classList.add("active");
-
-},15000);
-
-
-setTimeout(function(){
-
-  document.getElementById("final").classList.add("show");
-
-},22000);
+}
 
 </script>
 
